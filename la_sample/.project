@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>la_sample</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.windriver.ide.core.wrbuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.windriver.ide.core.wrnature</nature>
+		<nature>com.windriver.ide.core.wrcorenature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+	</natures>
+	<variableList>
+		<variable>
+			<name>INTEL_IPP</name>
+			<value>file:/C:/WindRiver/intel/20160311-vxworks-6.9/ipp</value>
+		</variable>
+	</variableList>
+</projectDescription>

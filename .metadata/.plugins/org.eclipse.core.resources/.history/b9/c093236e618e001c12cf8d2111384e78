@@ -1,0 +1,172 @@
+#include <stdio.h>
+#include <ipp.h>
+/*
+// The functions providing simple output of the result
+// for single precision and double precision real data.
+// These functions are only for tight data:
+// Stride2 = sizeof(dataType)
+// Srtide1 = width*sizeof(dataType)
+// Stride0 = length*sizeof(dataType) - for vector array
+// Stride0 = width*height*sizeof(dataType) - for matrix array
+*/
+#define genPRINT_m(TYPE) \
+void printf_m_Ipp##TYPE(const char* msg, Ipp##TYPE* buf, int width, int height, IppStatus st ) \
+{ int i, j; \
+if( st < ippStsNoErr ) { \
+printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+} else { \
+printf("%s \n", msg ); \
+for( j=0; j < height; j++) { \
+for( i=0; i < width; i++) { \
+printf("%f ", buf[j*width+i]); } \
+printf("\n"); } } \
+}
+#define genPRINT_ma(TYPE) \
+void printf_ma_Ipp##TYPE(const char* msg, Ipp##TYPE## *buf, int width, int height, int count, IppStatus st ) \
+{ int i, j, k; \
+if( st < ippStsNoErr ) { \
+printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+} else { \
+printf("%s \n", msg ); \
+for( j=0; j < height; j++) { \
+for( k=0; k < count; k++) { \
+for( i=0; i < width; i++){ \
+printf("%f ", buf[j*width+i+k*width*height]); \
+} printf(" "); } printf("\n");}} \
+}
+#define genPRINT_m_L(TYPE) \
+void printf_ma_Ipp##TYPE##_L(const char* msg, Ipp##TYPE** buf, int width, int height, int count, IppStatus st )\
+{ int i, j, k; \
+Ipp##TYPE## *dst; \
+if( st < ippStsNoErr ) { \
+printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+} else { \
+printf("%s \n", msg ); \
+for( j=0; j < height; j++) { \
+for( k=0; k < count; k++) { \
+dst = (Ipp##TYPE##*)buf[k]; \
+for( i=0; i < width; i++) { \
+printf("%f ", dst[j*width+i]); } \
+printf(" "); } printf("\n"); } } \
+}
+#define genPRINT_m_P(TYPE) \
+void printf_m_Ipp##TYPE##_P(const char* msg, Ipp##TYPE** buf, int width, int height, IppStatus st ) \
+{ int i, j; \
+if( st < ippStsNoErr ) { \
+printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+} else { \
+printf("%s \n", msg ); \
+for( j=0; j < height; j++) { \
+for( i=0; i < width; i++) { \
+printf("%f ", *buf[j*width+i]); } \
+printf("\n"); } } \
+}
+#define genPRINT_va(TYPE) \
+void printf_va_Ipp##TYPE(const char* msg, Ipp##TYPE* buf, int length, int count, IppStatus st ) \
+{ int i, j; \
+if( st < ippStsNoErr ) { \
+printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+} else { \
+printf("%s \n", msg ); \
+for( j=0; j < count; j++) { \
+for( i=0; i < length; i++) { \
+printf("%f ", buf[j*length+i]); } \
+printf("\n"); } } \
+}
+void printf_v_int(const char* msg, int* buf, int length) \
+{ int i; \
+printf("%s \n", msg ); \
+for( i=0; i < length; i++) \
+printf("%d ", buf[i]); \
+printf("\n"); \
+}
+genPRINT_va( 32f );
+genPRINT_m( 32f );
+genPRINT_ma( 32f );
+genPRINT_m_P( 32f );
+genPRINT_m_L( 32f );
+genPRINT_va( 64f );
+genPRINT_m( 64f );
+genPRINT_ma( 64f );
+genPRINT_m_P( 64f );
+genPRINT_m_L( 64f );
+ 
+IppStatus transpose_m_32f(void) {
+    /* Source matrix with width=4 and height=3 */
+    Ipp32f pSrc[3*4] = { 1,  2, 3, 4,
+                         5,  6, 7, 8,
+                         9,  0, 1, 2 };
+
+    /* Destination matrix with width=3 and height=4 */
+    Ipp32f pDst[4*3];
+    /* Standard description for source and destination matrices */
+    int srcStride2 = sizeof(Ipp32f);
+    int srcStride1 = 4*sizeof(Ipp32f);
+    int dstStride2 = sizeof(Ipp32f);
+    int dstStride1 = 3*sizeof(Ipp32f);
+
+    IppStatus status = ippmTranspose_m_32f((const Ipp32f*)pSrc,
+        srcStride1, srcStride2, 4, 3, pDst, dstStride1, dstStride2);
+
+    /*    // It is recommended to check return status    // to detect wrong input parameters, if any    */
+    if (status == ippStsNoErr) 
+    {
+    	printf_m_Ipp32f("Original matrix:", pSrc, 3 * 4, status);
+    	printf_m_Ipp32f("Transposed matrix:", pDst, 3 * 4, status);
+    } else 
+    {
+    	printf("Function returns status: %s \n", ippGetStatusString(status));
+    }
+
+    return status;
+}
+
+IppStatus mul_mac_32f(void){
+    /* Source data: 2 matrices with width=3 and height=3 */
+    Ipp32f pSrc[8*3] = { 3.0f, 1.1f, 1.2f,
+                         1.3f, 1.4f, 1.5f,
+                         2.0f, 2.1f, 2.2f,
+                         0.0f, 0.0f, 0.0f,
+                         3.3f, 2.4f, 2.5f,
+                         3.0f, 3.1f, 3.2f,
+                         4.3f, 4.4f, 4.5f,
+                         0.0f, 0.0f, 0.0f };
+    /* Standard description for 2 source matrices */
+    int srcStride2 = sizeof(Ipp32f);
+    int srcStride1 = 3*sizeof(Ipp32f);
+    int srcStride0 = 4*3*sizeof(Ipp32f);
+
+    Ipp32f val=2.0;
+
+    /* Standard description for 2 destination matrices */
+    Ipp32f pDst[2*3*3];
+    int dstStride2 = sizeof(Ipp32f);
+    int dstStride1 = 3*sizeof(Ipp32f);
+    int dstStride0 = 9*sizeof(Ipp32f);
+
+    int width  = 3;
+    int height = 3;
+    int count  = 2;
+
+    IppStatus status = ippmMul_mac_32f((const Ipp32f*)pSrc, srcStride0,
+        srcStride1, srcStride2, val, pDst, dstStride0, dstStride1,
+        dstStride2, width, height, count);
+
+    /*
+    // It is recommended to check return status
+    // to detect wrong input parameters, if any
+    */
+    if (status == ippStsNoErr) {
+    	printf_ma_ipp32f("Destination matrices:", pDst, 3 * 3 * 2, status);
+    } else {
+    	printf("Function returns status: %s \n", ippGetStatusString(status));
+    }
+    
+    return status;
+}
+
+int main(){
+	transpose_m_32f();
+	mul_mac_32f();
+	return 0;
+}

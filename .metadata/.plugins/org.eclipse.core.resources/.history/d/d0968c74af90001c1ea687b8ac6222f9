@@ -1,0 +1,286 @@
+#include <stdio.h>
+#include <ipp.h>
+#include <math.h>
+
+#define PI 3.14159265358979323846
+
+/*
+// The functions providing simple output of the result
+// for single precision and double precision real data.
+// These functions are only for tight data:
+// Stride2 = sizeof(dataType)
+// Srtide1 = width*sizeof(dataType)
+// Stride0 = length*sizeof(dataType) - for vector array
+// Stride0 = width*height*sizeof(dataType) - for matrix array
+*/
+#define genPRINT_m(TYPE) \
+void printf_m_Ipp##TYPE(const char* msg, Ipp##TYPE* buf, int width, int height, IppStatus st ) \
+{ 	int i, j; \
+	if( st < ippStsNoErr ) { \
+		printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+	} else { \
+		printf("%s \n", msg ); \
+		for( j=0; j < height; j++) { \
+			for( i=0; i < width; i++) { \
+				printf("%f ", buf[j*width+i]); } \
+				printf("\n"); } } \
+}
+
+#define genPRINT_ma(TYPE) \
+void printf_ma_Ipp##TYPE(const char* msg, Ipp##TYPE *buf, int width, int height, int count, IppStatus st ) \
+{ 	int i, j, k; \
+	if( st < ippStsNoErr ) { \
+		printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+	} else { \
+		printf("%s \n", msg ); \
+		for( j=0; j < height; j++) { \
+			for( k=0; k < count; k++) { \
+				for( i=0; i < width; i++){ \
+					printf("%f ", buf[j*width+i+k*width*height]); \
+				} printf(" "); } printf("\n");}} \
+}
+
+#define genPRINT_m_L(TYPE) \
+void printf_ma_Ipp##TYPE##_L(const char* msg, Ipp##TYPE** buf, int width, int height, int count, IppStatus st )\
+{	 int i, j, k; \
+	Ipp##TYPE *dst; \
+	if( st < ippStsNoErr ) { \
+		printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+	} else { \
+		printf("%s \n", msg ); \
+		for( j=0; j < height; j++) { \
+			for( k=0; k < count; k++) { \
+				dst = (Ipp##TYPE*)buf[k]; \
+				for( i=0; i < width; i++) { \
+					printf("%f ", dst[j*width+i]); } \
+					printf(" "); } printf("\n"); } } \
+}
+
+#define genPRINT_m_P(TYPE) \
+void printf_m_Ipp##TYPE##_P(const char* msg, Ipp##TYPE** buf, int width, int height, IppStatus st ) \
+{ 	int i, j; \
+	if( st < ippStsNoErr ) { \
+		printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+	} else { \
+		printf("%s \n", msg ); \
+		for( j=0; j < height; j++) { \
+			for( i=0; i < width; i++) { \
+				printf("%f ", *buf[j*width+i]); } \
+				printf("\n"); } } \
+}
+
+#define genPRINT_va(TYPE) \
+void printf_va_Ipp##TYPE(const char* msg, Ipp##TYPE* buf, int length, int count, IppStatus st ) \
+{	 int i, j; \
+	if( st < ippStsNoErr ) { \
+		printf( "-- error %d, %s\n", st, ippGetStatusString( st )); \
+	} else { \
+		printf("%s \n", msg ); \
+		for( j=0; j < count; j++) { \
+			for( i=0; i < length; i++) { \
+				printf("%f ", buf[j*length+i]); } \
+				printf("\n"); } } \
+}
+
+void printf_v_int(const char* msg, int* buf, int length) \
+{ 	int i; \
+	printf("%s \n", msg ); \
+	for( i=0; i < length; i++) \
+	printf("%d ", buf[i]); \
+	printf("\n"); \
+}
+genPRINT_va( 32f );
+genPRINT_m( 32f );
+genPRINT_ma( 32f );
+genPRINT_m_P( 32f );
+genPRINT_m_L( 32f );
+genPRINT_va( 64f );
+genPRINT_m( 64f );
+genPRINT_ma( 64f );
+genPRINT_m_P( 64f );
+genPRINT_m_L( 64f );
+ 
+IppStatus transpose_m_32f(void) {
+    /* Source matrix with width=4 and height=3 */
+    Ipp32f pSrc[3*4] = { 1,  2, 3, 4,
+                         5,  6, 7, 8,
+                         9,  0, 1, 2 };
+
+    /* Destination matrix with width=3 and height=4 */
+    Ipp32f pDst[4*3];
+    /* Standard description for source and destination matrices */
+    int srcStride2 = sizeof(Ipp32f);
+    int srcStride1 = 4*sizeof(Ipp32f);
+    int dstStride2 = sizeof(Ipp32f);
+    int dstStride1 = 3*sizeof(Ipp32f);
+
+    IppStatus status = ippmTranspose_m_32f((const Ipp32f*)pSrc,
+        srcStride1, srcStride2, 4, 3, pDst, dstStride1, dstStride2);
+
+    /*    // It is recommended to check return status    // to detect wrong input parameters, if any    */
+    if (status == ippStsNoErr) 
+    {
+    	printf_m_Ipp32f("Original matrix:", pSrc, 3, 4, status);
+    	printf_m_Ipp32f("Transposed matrix:", pDst, 3, 4, status);
+    } else 
+    {
+    	printf("Function returns status: %s \n", ippGetStatusString(status));
+    }
+
+    return status;
+}
+
+IppStatus mul_mm_32f(void) {
+    /* Src1 matrix with width=4 and height=3 */
+    Ipp32f pSrc1[3*15] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3,
+                           2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4,
+                           3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5 };
+    
+    int src1Width  = 15;
+    int src1Height = 3;
+    int src1Stride2 = sizeof(Ipp32f);
+    int src1Stride1 = 15*sizeof(Ipp32f);    /* Src2 matrix with width=3 and height=4 */
+    Ipp32f pSrc2[15*3] = { 1, 2, 3,
+                          2, 1, 2,
+                          3, 2, 1,
+                          4, 3, 2,
+    					  5, 4, 3,
+    					  6, 5, 4,
+    					  7, 6, 5,
+    					  8, 7, 6,
+    					  9, 8, 7,
+    					  8, 9, 8,
+    					  7, 8, 9,
+    					  6, 7, 8,
+    					  5, 6, 7,
+    					  4, 5, 6,
+    					  3, 4, 5 };
+    int src2Width  = 3;
+    int src2Height = 15;
+    int src2Stride2 = sizeof(Ipp32f);
+    int src2Stride1 = 3*sizeof(Ipp32f);
+
+    /*
+    // Destination matrix has width=src2Width=3 and height=src1Height=3 
+    */
+    Ipp32f pDst[3*3];
+    int dstStride2 = sizeof(Ipp32f);
+    int dstStride1 = 3*sizeof(Ipp32f);
+
+    IppStatus status = ippmMul_mm_32f((const Ipp32f*)pSrc1, src1Stride1,
+        src1Stride2, src1Width, src1Height, (const Ipp32f*)pSrc2,
+        src2Stride1, src2Stride2, src2Width, src2Height,
+        pDst, dstStride1, dstStride2);
+    /*    
+    // It is recommended to check return status
+    // to detect wrong input parameters, if any
+    */    
+    if (status == ippStsNoErr) {
+    	printf_m_Ipp32f("Source matrix 1:", pSrc1, 15, 3, status);    
+    	printf_m_Ipp32f("Source matrix 2:", pSrc2, 3, 15, status);    
+    	printf_m_Ipp32f("Destination matrix:", pDst, 3, 3, status);
+    } else {        
+    	printf("Function returns status: %s \n", ippGetStatusString(status));    
+    }    
+    
+    return status;
+}
+IppStatus forwardKinematics(float q1, float q2, float q3, float q4, float q5, float q6){
+	IppStatus status;
+	
+	Ipp32f DH_MA[4*4*7] = {cos(q1), 0, -sin(q1), 50*cos(q1),
+						   sin(q1), 0, cos(q1) , 50*sin(q1),
+						   0,      -1, 0,        0,
+						   0,       0, 0,        1,
+						   
+						   cos(q2-PI/2), -sin(q2-PI/2), 0, 425*cos(q2-PI/2),
+						   sin(q2-PI/2),  cos(q2-PI/2), 0, 425*sin(q2-PI/2),
+						   0,             0,            1, 50,
+						   0,             0,            0, 1,
+	
+						   cos(q3+PI/2), 0, sin(q3+PI/2),  0,
+						   sin(q3+PI/2), 0, -cos(q3+PI/2), 0,
+						   0,            1, 0,             0,
+						   0,            0, 0,             1,
+
+						   cos(q4), 0, -sin(q4), 0,
+						   sin(q4), 0, cos(q4),  0,
+						   0,      -1, 0,        425,
+						   0,       0, 0,        1,
+		
+						   cos(q5), 0, sin(q5),  0,
+						   sin(q5), 0, -cos(q5), 0,
+						   0,       1, 0,        0,
+						   0,       0, 0,        1,
+						   
+						   cos(q6), -sin(q6), 0, 0,
+						   sin(q6), cos(q6),  0, 0,
+						   0,       0,        1, 0,
+						   0,       0,        0, 1,
+	
+						   1, 0, 0, 0,
+						   0, 1, 0, 0,
+						   0, 0, 1, 100,
+						   0, 0, 0, 1};
+
+	int DH_Width  = 4;
+	int DH_Height = 4;
+	int DH_size = (DH_Width * DH_Height);
+	/* Set stride2*/
+	int DH_stride2 = sizeof(Ipp32f)*1;
+	/* Set stride1*/
+	int DH_stride1 = sizeof(Ipp32f)*4;
+
+	Ipp32f HT_MA[4*4*7];
+	
+	int HT_Width  = 4;
+	int HT_Height = 4;
+	int HT_size = (HT_Height * HT_Width);
+	int count = 7;
+	/* Set stride2*/
+	int HT_stride2 = sizeof(Ipp32f)*1;
+	/* Set stride1*/
+	int HT_stride1 = sizeof(Ipp32f)*4;
+	
+	Ipp32f tmp[4*4] = {1, 0, 0, 0,
+					   0, 1, 0, 0,
+					   0, 0, 1, 0,
+					   0, 0, 0, 1};
+	
+	Ipp32f result[4*4];
+
+	int i, j;
+	for (i = 0; i < count; i++ )
+	{
+		Ipp32f DH_M[4*4];
+		for(j = 0; j < DH_size; j++){
+			DH_M[j] = DH_MA[j + i*DH_size];
+		}
+		
+		status = ippmMul_mm_32f((const Ipp32f*)tmp,
+				HT_stride1, HT_stride2, HT_Width, HT_Height,
+				(const Ipp32f*)DH_M, DH_stride1,
+				DH_stride2, DH_Width, DH_Height, 
+				result, HT_stride1, HT_stride2);
+		
+		for(j = 0; j < HT_size; j++){
+			HT_MA[j + i*HT_size] = result[j];
+			tmp[j] = result[j];
+		}
+	}
+	
+	printf_ma_Ipp32f("Result: ", HT_MA, HT_Width, HT_Height, count, status);
+	
+	return status;
+}
+
+
+int main(){
+	/*transpose_m_32f();
+	printf("\n\n");
+	mul_mm_32f();
+	printf("Atan2: %.3f", atan2(1,1));*/
+	
+	forwardKinematics(0, 0, 0, 0, 0, 0);
+	return 0;
+}

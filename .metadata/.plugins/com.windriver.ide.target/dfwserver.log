@@ -1,0 +1,35 @@
+# 12:45:22.696:0: Opening log file on: Fri Feb 18 12:45:22 2022
+# 12:45:22.696:0: DFW_BUILD_3_3_6_7 - 10/06/2016 09:57:12
+# 12:45:22.696:0: DFW plugin directories: C:/WindRiver/workbench-3.3/dfw/host/x86-win32/dfwplugins
+# 12:45:22.696:0: C:\WindRiver\workbench-3.3\dfw\x86-win32\bin\dfwserver.exe -protocol mi -io sockets -useregistry -session dfw-wb336-Egoitz -registryhost 127.0.0.1 -ls+ C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwserver.log -lt+ C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwstatus.log 
+# 12:45:27.406:1: Opening session 29e2198
+12:45:27.415:1: c:	\0012
+12:45:27.415:1: c:	-wrs-log -lt "" -max 5M
+12:45:27.415:1: r:	^done
+12:45:27.415:1: r:	(gdb)
+12:45:27.415:1: r:	^done,lt="C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwstatus.log",lt="C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwstatus.log"
+12:45:27.415:1: r:	(gdb)
+12:45:27.415:1: c:	-wrs-log -ls "" -max 5M
+12:45:27.416:1: r:	^done,ls="C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwserver.log",ls="C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwserver.log"
+12:45:27.416:1: r:	(gdb)
+# 12:45:27.416:1: Closing session 29e2198
+# 12:45:27.416:0: (listening - gdbmi on port 63530)
+# 12:45:27.424:0: initialization finished, pid=3656
+# 12:45:27.468:2: Opening session 337bda8
+12:45:27.485:2: c:	0-wrs-info-retrieve /DfwServer default:*
+12:45:27.485:2: r:	0^done,info={path="",nodeInfo={nodeName="DfwServer",nodeType="struct",numChildrenReturned="9",children=[{nodeName="BuildName",nodeValue="DFW_BUILD_3_3_6_7 - 10/06/2016 09:57:12"},{nodeName="APIVersionMajor",nodeValue="02"},{nodeName="APIVersionMinor",nodeValue="017.000"},{nodeName="CommandLine",nodeValue="C:\\\\WindRiver\\\\workbench-3.3\\\\dfw\\\\x86-win32\\\\bin\\\\dfwserver.exe -protocol mi -io sockets -useregistry -session dfw-wb336-Egoitz -registryhost 127.0.0.1 -ls+ C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwserver.log -lt+ C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwstatus.log "},{nodeName="ProcessID",nodeValue="3656"},{nodeName="PluginDirectory",nodeValue="C:/WindRiver/workbench-3.3/dfw/host/x86-win32/dfwplugins"},{nodeName="DFW_PLUGIN_PATH",nodeValue=""},{nodeName="Release",nodeValue="true"},{nodeName="Port",nodeValue="63530"}]}}
+12:45:27.485:2: r:	(gdb)
+12:45:27.490:2: c:	1-wrs-module-set -m ""
+12:45:27.490:2: r:	1^done,max-file-size="60M"
+12:45:27.490:2: r:	(gdb)
+12:45:27.491:2: c:	2-wrs-log -lt + -max 5M
+12:45:27.492:2: r:	2^done,lt="+C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwstatus.log",lt="+C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwstatus.log"
+12:45:27.492:2: r:	(gdb)
+12:45:27.492:2: c:	3-wrs-log -ls + -max 5M
+# 12:45:27.492:0: Closing log file
+# 12:45:27.493:0: Opening log file on: Fri Feb 18 12:45:27 2022
+# 12:45:27.493:0: DFW_BUILD_3_3_6_7 - 10/06/2016 09:57:12
+# 12:45:27.493:0: DFW plugin directories: C:/WindRiver/workbench-3.3/dfw/host/x86-win32/dfwplugins
+12:45:27.493:2: r:	3^done,ls="+C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwserver.log",ls="+C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/dfwserver.log"
+12:45:27.493:2: r:	(gdb)
+12:45:27.494:2: c:	4-wrs-info-retrieve /ProcessorPluginsInformation default:*/{Name,Description,ProcessorTree/*/*,RegisterModels/*/*/*}

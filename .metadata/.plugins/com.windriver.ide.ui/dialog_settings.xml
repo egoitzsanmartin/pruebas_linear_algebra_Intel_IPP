@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SAIspCalculatorDialog">
+	</section>
+	<section name="SYIspCalculatorDialog">
+	</section>
+	<section name="SAProperties">
+	</section>
+	<section name="WRProjectWizard">
+		<item value="Downloadable Kernel Module" key="WRGenericProjectWizardBuildTypePage.STORE_SELECTED_BUILD_TYPE"/>
+		<item value="vxworks-6.9" key="WRGenericProjectWizardBuildTypePage.STORE_SELECTED_PLATFORM"/>
+		<item value="vxworks-6.9" key="WRTargetOSWizardPage.STORE_SELECTED_PLATFORM"/>
+		<list key="WRWizardNewProjectCreationPage.STORE_PROJECT_LOCATION">
+			<item value="C:\WindRiver\workspace\la_sample"/>
+			<item value="C:\WindRiver\workspace\la_src"/>
+			<item value="C:\WindRiver\workspace\a"/>
+			<item value="C:\WindRiver\workspace\az"/>
+			<item value="C:\WindRiver\workspace\algebra_lineal"/>
+		</list>
+	</section>
+	<section name="class com.windriver.ide.ui.staticanalysis.ispwizard.WRStoreGeneratedIncludesPage">
+	</section>
+	<section name="unchecked-vars">
+		<item value="false" key="show.inactiveIncludes"/>
+		<item value="true" key="hide.inactiveSystemIncludes"/>
+		<item value="false" key="hide.systemIncludes"/>
+		<item value="false" key="hide.followWorkspaceExternalIncludes"/>
+	</section>
+</section>

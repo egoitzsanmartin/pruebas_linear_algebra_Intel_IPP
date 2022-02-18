@@ -1,0 +1,51 @@
+#define genPRINT(TYPE,FMT) \
+void printf_##TYPE(const char* msg, Ipp##TYPE* buf, int len, IppStatus st ) { \
+   int n; \
+   if( st > ippStsNoErr ) \
+      printf( "\n-- warning %d, %s", st, ippGetStatusString( st )); \
+   else if( st < ippStsNoErr ) \
+      printf( "\n-- error %d, %s", st, ippGetStatusString( st )); \
+   printf("\n %s \n", msg ); \
+   for( n=0; n<len; ++n ) printf( FMT, buf[n] ); \
+   printf("\n" ); \
+}
+genPRINT( 64f, " %f" )
+genPRINT( 32f, " %f" )
+genPRINT( 32u, " %u" )
+genPRINT( 16s, " %d" )
+genPRINT( 8u, " %u" )
+
+#define genPRINTcplx(TYPE,FMT) \
+void printf_##TYPE(const char* msg, Ipp##TYPE* buf, int len, IppStatus st ) { \
+   int n; \
+   if( st > ippStsNoErr ) \
+      printf( "\n-- warning %d, %s", st, ippGetStatusString( st )); \
+   else if( st < ippStsNoErr ) \
+      printf( "\n-- error %d, %s", st, ippGetStatusString( st )); \
+   printf(" %s ", msg ); \
+   for( n=0; n<len; ++n ) printf( FMT, buf[n].re, buf[n].im ); \
+   printf("\n" ); \
+}
+genPRINTcplx( 64fc, " {%f,%f}" )
+genPRINTcplx( 32fc, " {%f,%f}" )
+genPRINTcplx( 16sc, " {%d,%d}" )
+
+#define genPRINT_2D(TYPE,FMT) \
+void printf_##TYPE##_2D(const char* msg, Ipp##TYPE* buf, IppiSize roi, int step, IppStatus st ) { \
+   int i, j; \
+   if ( st > ippStsNoErr ) { \
+      printf( "\n-- warning %d, %s", st, ippGetStatusString( st )); \
+   } else if ( st < ippStsNoErr ) { \
+      printf( "\n-- error %d, %s", st, ippGetStatusString( st )); \
+   } \
+   printf("\n %s \n", msg ); \
+   for ( i=0; i<roi.height; i++ ) { \
+      for ( j=0; j<roi.width; j++ ) { \
+         printf( FMT, ((Ipp##TYPE*)(((Ipp8u*)buf) + i*step))[j] ); \
+      } \
+      printf("\n"); \
+   } \
+   printf("\n" ); \
+}
+genPRINT_2D( 8u, " %u" )
+genPRINT_2D( 32f, " %.1f" )

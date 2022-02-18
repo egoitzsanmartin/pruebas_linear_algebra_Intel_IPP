@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="com.windriver.ide.launch.ui.context.WRFlatCompositeLaunchContextSelectorMediatorPage">
+		<section name="com.windriver.ide.launch.ui.context.WRFlatCompositeLaunchContextSelectorMediatorPage$WRFlatCompositeLaunchContextSelectorControl">
+			<item value="false" key="noEntryPoint - lli_test.out - vxsim0.hideUnconnected"/>
+			<item value="false" key="New_configuration.hideUnconnected"/>
+			<item value="false" key="noEntryPoint - la_sample.out - vxsim0.hideUnconnected"/>
+			<item value="false" key="main - la_sample.out - vxsim0.hideUnconnected"/>
+			<item value="false" key="transpose_m_32f - la_sample.out - vxsim0.hideUnconnected"/>
+			<item value="false" key="tMain  - VxWorks 6.9 - vxsim0.hideUnconnected"/>
+			<item value="false" key="noEntryPoint - algebra_lineal.out - vxsim0.hideUnconnected"/>
+			<item value="false" key="menu - lli_test.out - vxsim0.hideUnconnected"/>
+			<item value="false" key="transpose_m_32f - la_sample.out - multiple.hideUnconnected"/>
+		</section>
+	</section>
+	<section name="WRLaunchConfigSelectionDialog.com.windriver.ide.launch.vxworks6.tmRunTask">
+		<item value="false" key="new"/>
+		<item value="false" key="duplicate"/>
+		<item value="false" key="edit"/>
+		<item value="true" key="launch"/>
+	</section>
+	<section name="com.windriver.ide.launch.ui.context.WRCompositeContextSelectorTab">
+		<section name="com.windriver.ide.launch.ui.tabs.vxworks.kerneltask.WRVxWorksKernelTaskConfiguratorMediatorPage">
+		</section>
+		<section name="com.windriver.ide.launch.ui.tabs.vxworks.kerneltask.download.WRVxWorksKernelModuleDownloadConfiguratorMediatorPage">
+			<item value="true" key="Advanced"/>
+		</section>
+	</section>
+	<section name="WRVxWorksKernelTaskEntryPointSelectionDialog">
+	</section>
+</section>

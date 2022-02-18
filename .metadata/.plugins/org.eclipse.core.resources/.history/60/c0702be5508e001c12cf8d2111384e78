@@ -1,0 +1,41 @@
+#define genPRINT(TYPE,FMT) \
+void printf_##TYPE(const char* msg, Ipp##TYPE* buf, int len, IppStatus st ) { \
+   int n; \
+   if( st > ippStsNoErr ) \
+      printf( "\n-- warning %d, %s", st, ippGetStatusString( st )); \
+   else if( st < ippStsNoErr ) \
+      printf( "\n-- error %d, %s", st, ippGetStatusString( st )); \
+   printf("\n %s \n", msg ); \
+   for( n=0; n<len; ++n ) printf( FMT, buf[n] ); \
+   printf("\n" ); \
+}
+
+#define genPRINTcplx(TYPE,FMT) \
+void printf_##TYPE(const char* msg, Ipp##TYPE* buf, int len, IppStatus st ) { \
+   int n; \
+   if( st > ippStsNoErr ) \
+      printf( "\n-- warning %d, %s", st, ippGetStatusString( st )); \
+   else if( st < ippStsNoErr ) \
+      printf( "\n-- error %d, %s", st, ippGetStatusString( st )); \
+   printf(" %s ", msg ); \
+   for( n=0; n<len; ++n ) printf( FMT, buf[n].re, buf[n].im ); \
+   printf("\n" ); \
+}
+
+#define genPRINT_2D(TYPE,FMT) \
+void printf_##TYPE##_2D(const char* msg, Ipp##TYPE* buf, IppiSize roi, int step, IppStatus st ) { \
+   int i, j; \
+   if ( st > ippStsNoErr ) { \
+      printf( "\n-- warning %d, %s", st, ippGetStatusString( st )); \
+   } else if ( st < ippStsNoErr ) { \
+      printf( "\n-- error %d, %s", st, ippGetStatusString( st )); \
+   } \
+   printf("\n %s \n", msg ); \
+   for ( i=0; i<roi.height; i++ ) { \
+      for ( j=0; j<roi.width; j++ ) { \
+         printf( FMT, ((Ipp##TYPE*)(((Ipp8u*)buf) + i*step))[j] ); \
+      } \
+      printf("\n"); \
+   } \
+   printf("\n" ); \
+}
