@@ -3,8 +3,8 @@
 	<section name="DialogBounds_SearchDialog">
 		<item value="671" key="DIALOG_WIDTH"/>
 		<item value="172" key="DIALOG_Y_ORIGIN"/>
-		<item value="528" key="DIALOG_HEIGHT"/>
 		<item value="634" key="DIALOG_X_ORIGIN"/>
+		<item value="528" key="DIALOG_HEIGHT"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="Search">
@@ -20,6 +20,9 @@
 			<item value="org.eclipse.cdt.ui.pdomSearchPage"/>
 			<item value="org.eclipse.wst.jsdt.ui.JavaSearchPage"/>
 		</list>
+	</section>
+	<section name="org.eclipse.cdt.ui.pdomSearchViewPage">
+		<item value="true" key="showEnclosingDefinitions"/>
 	</section>
 	<section name="SearchDialog.ScopePart">
 		<item value="0" key="scope"/>

@@ -185,8 +185,7 @@ IppStatus mul_mm_32f(void) {
     
     return status;
 }
-IppStatus forwardKinematics(float q1, float q2, float q3, float q4, float q5, float q6){
-	IppStatus status;
+void forwardKin(float q1, float q2, float q3, float q4, float q5, float q6){
 	
 	Ipp32f DH_MA[4*4*7] = {cos(q1), 0, -sin(q1), 50*cos(q1),
 						   sin(q1), 0, cos(q1) , 50*sin(q1),
@@ -259,7 +258,7 @@ IppStatus forwardKinematics(float q1, float q2, float q3, float q4, float q5, fl
 			DH_M[j] = DH_MA[j + i*DH_size];
 		}
 		
-		status = ippmMul_mm_32f((const Ipp32f*)tmp,
+		ippmMul_mm_32f((const Ipp32f*)tmp,
 				HT_stride1, HT_stride2, HT_Width, HT_Height,
 				(const Ipp32f*)DH_M, DH_stride1,
 				DH_stride2, DH_Width, DH_Height, 
@@ -275,19 +274,105 @@ IppStatus forwardKinematics(float q1, float q2, float q3, float q4, float q5, fl
 	for(j = 0; j < HT_size; j++){
 		A0_flange[j] = result[j];
 	}
-	printf_m_Ipp32f("Result: ", A0_flange, HT_Width, HT_Height, status);
+	printf_m_Ipp32f("Result: ", A0_flange, HT_Width, HT_Height, ippStsNoErr);
 
-	
-	return status;
 }
 
+void printJacobian(float q1, float q2, float q3, float q4, float q5, float q6){
+	Ipp32f jacobian[6*6] = {- 50*sin(q1) - sin(q1)*(425*sin(q2) - cos(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425))) - cos(q1)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100 + 50), cos(q1)*(425*cos(q2) + cos(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425))), cos(q1)*cos(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + cos(q1)*sin(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)),   sin(q1)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - cos(q2 + q3)*cos(q1)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100), - ((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100)*(sin(q1)*sin(q4) - cos(q1)*cos(q2)*cos(q3)*cos(q4) + cos(q1)*cos(q4)*sin(q2)*sin(q3)) - sin(q2 + q3)*cos(q1)*((7683*sin(q5))/25 - (5647*cos(q5)*sin(q6))/100), (5647*cos(q6)*(cos(q5)*sin(q1)*sin(q4) + cos(q1)*cos(q2)*sin(q3)*sin(q5) + cos(q1)*cos(q3)*sin(q2)*sin(q5) - cos(q1)*cos(q2)*cos(q3)*cos(q4)*cos(q5) + cos(q1)*cos(q4)*cos(q5)*sin(q2)*sin(q3)))/100 + (5647*sin(q6)*(cos(q4)*sin(q1) + cos(q1)*cos(q2)*cos(q3)*sin(q4) - cos(q1)*sin(q2)*sin(q3)*sin(q4)))/100,
+			  50*cos(q1) + cos(q1)*(425*sin(q2) - cos(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425))) - sin(q1)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100 + 50), sin(q1)*(425*cos(q2) + cos(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425))), cos(q2)*sin(q1)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q1)*sin(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)), - cos(q1)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - cos(q2 + q3)*sin(q1)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100),   ((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100)*(cos(q1)*sin(q4) + cos(q2)*cos(q3)*cos(q4)*sin(q1) - cos(q4)*sin(q1)*sin(q2)*sin(q3)) - sin(q2 + q3)*sin(q1)*((7683*sin(q5))/25 - (5647*cos(q5)*sin(q6))/100), (5647*cos(q6)*(cos(q2)*sin(q1)*sin(q3)*sin(q5) - cos(q1)*cos(q5)*sin(q4) + cos(q3)*sin(q1)*sin(q2)*sin(q5) - cos(q2)*cos(q3)*cos(q4)*cos(q5)*sin(q1) + cos(q4)*cos(q5)*sin(q1)*sin(q2)*sin(q3)))/100 - (5647*sin(q6)*(cos(q1)*cos(q4) - cos(q2)*cos(q3)*sin(q1)*sin(q4) + sin(q1)*sin(q2)*sin(q3)*sin(q4)))/100,
+			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      0,           cos(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) - 425*sin(q2) - sin(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)),                 cos(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) - sin(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)),                                                                                                                   sin(q2 + q3)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100),                                                                          - cos(q2 + q3)*((7683*sin(q5))/25 - (5647*cos(q5)*sin(q6))/100) - sin(q2 + q3)*cos(q4)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100),                                                                                                                            (5647*cos(q6)*(cos(q2)*cos(q3)*sin(q5) - sin(q2)*sin(q3)*sin(q5) + cos(q2)*cos(q4)*cos(q5)*sin(q3) + cos(q3)*cos(q4)*cos(q5)*sin(q2)))/100 - (5647*sin(q2 + q3)*sin(q4)*sin(q6))/100,
+			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      0,                                                                                                                                                                                                                                                                                                                                                                                    -sin(q1),                                                                                                                                                                                                                                                                                                                                                                            -sin(q1),                                                                                                                                                                                                         sin(q2 + q3)*cos(q1),                                                                                                                              cos(q1)*sin(q2)*sin(q3)*sin(q4) - cos(q1)*cos(q2)*cos(q3)*sin(q4) - cos(q4)*sin(q1),                                                                                                                                 cos(q1)*cos(q2)*cos(q5)*sin(q3) - sin(q1)*sin(q4)*sin(q5) + cos(q1)*cos(q3)*cos(q5)*sin(q2) + cos(q1)*cos(q2)*cos(q3)*cos(q4)*sin(q5) - cos(q1)*cos(q4)*sin(q2)*sin(q3)*sin(q5),
+			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      0,                                                                                                                                                                                                                                                                                                                                                                                     cos(q1),                                                                                                                                                                                                                                                                                                                                                                             cos(q1),                                                                                                                                                                                                         sin(q2 + q3)*sin(q1),                                                                                                                              cos(q1)*cos(q4) - cos(q2)*cos(q3)*sin(q1)*sin(q4) + sin(q1)*sin(q2)*sin(q3)*sin(q4),                                                                                                                                 cos(q1)*sin(q4)*sin(q5) + cos(q2)*cos(q5)*sin(q1)*sin(q3) + cos(q3)*cos(q5)*sin(q1)*sin(q2) + cos(q2)*cos(q3)*cos(q4)*sin(q1)*sin(q5) - cos(q4)*sin(q1)*sin(q2)*sin(q3)*sin(q5),
+			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      1,                                                                                                                                                                                                                                                                                                                                                                                           0,                                                                                                                                                                                                                                                                                                                                                                                   0,                                                                                                                                                                                                                 cos(q2 + q3),                                                                                                                                                                                             sin(q2 + q3)*sin(q4),                                                                                                                                                                                           cos(q2)*cos(q3)*cos(q5) - cos(q5)*sin(q2)*sin(q3) - cos(q2)*cos(q4)*sin(q3)*sin(q5) - cos(q3)*cos(q4)*sin(q2)*sin(q5)};
+	int J_Width = 6;
+	int J_Height = 6;
+	
+	/*
+	 	tusmuertos^2 = tusmuertos*tusmuertos ---> (\w{1,100})\^2
+	*/
+	
+	printf_m_Ipp32f("Jacobian: ", jacobian, J_Width, J_Height, ippStsNoErr);
+}
+
+void geoInvKin(Ipp32f* pos, Ipp32f* rot){
+	/* WC = pos - 100*rot*[0,0,1]T; */
+	
+	int pos_stride2 = sizeof(Ipp32f)*1;
+	
+	int rot_Width = 3;
+	int rot_Height = 3;
+	int rot_stride2 = sizeof(Ipp32f)*1;
+	int rot_stride1 = sizeof(Ipp32f)*3;
+	
+	Ipp32f zvec[3*1] = {0,
+						0,
+						1};
+	int zvec_len = 3;
+	int zvec_stride2 = sizeof(Ipp32f)*1;
+	
+	Ipp32f zrot[3*1];
+	int zrot_stride2 = sizeof(Ipp32f)*1;
+	
+	ippmMul_mv_32f((const Ipp32f*) rot, rot_stride1, rot_stride2, rot_Width, rot_Height, (const Ipp32f*) zvec, zvec_stride2, zvec_len, zrot, zrot_stride2);
+	
+	Ipp32f W_len[3*1];
+	int W_len_stride2 = sizeof(Ipp32f)*1;
+	int W_len_len = 3;
+	
+	ippmMul_vc_32f((const Ipp32f*) zrot, zrot_stride2, (Ipp32f) 100, W_len, W_len_stride2, W_len_len);
+	
+	Ipp32f WC[3*1];
+	int WC_stride2 = sizeof(Ipp32f)*1;
+	int WC_len = 3;
+	
+	ippmSub_vv_32f((const Ipp32f*) pos, pos_stride2, (const Ipp32f*) W_len, W_len_stride2, WC, WC_stride2, WC_len);
+	
+	Ipp32f Xc = WC[0];
+	Ipp32f Yc = WC[1];
+	Ipp32f Zc = WC[2];
+	
+	Ipp32f VQ11, VQ12, VQ31, VQ32, VQ21, VQ22, VQ4, VQ5, VQ6;
+	
+	VQ11 = atan2(Yc, Xc) - atan2(50, sqrt(pow(Xc, 2) + pow(Yc, 2) - 2500));
+	VQ12 = atan2(Yc, Xc) - atan2(-50, -sqrt(pow(Xc, 2) + pow(Yc, 2) - 2500));
+	
+	Ipp32f D = (pow(Xc-50 * cos(VQ11), 2) + pow(Yc-50 * sin(VQ11), 2) - 2500 + pow(Zc, 2) - 180625 - 180625) / (2*425*425);
+	
+	VQ31 = atan2(sqrt(1-D*D),D);
+	VQ32 = atan2(-sqrt(1-D*D),D);
+	
+	VQ21 = PI/2 - (atan2(Zc, sqrt(pow(Xc - 50 * cos(VQ11), 2) + pow(Yc - 50 * sin(VQ11), 2))) - atan2(425 * sin(VQ31), 425 + 425 * cos(VQ31)));
+	VQ22 = PI/2 - (atan2(Zc, sqrt(pow(Xc - 50 * cos(VQ11), 2) + pow(Yc - 50 * sin(VQ11), 2) - 2500)) - atan2(425 * sin(VQ32), 425 + 425 * cos(VQ32)));
+
+	/* Asumimos brazo izquierda y codo arriba */
+	VQ4 = atan2(-sin(VQ11) * rot[2] + cos(VQ11) * rot[5], cos(VQ22 + VQ31) * cos(VQ11) * rot[2] + cos(VQ22 + VQ31) * sin(VQ11) * rot[5] - sin(VQ22+VQ31) * rot[8]);
+	
+	Ipp32f D1 = sin(VQ22 + VQ31) * cos(VQ11) * rot[2] + sin(VQ22+VQ31) * sin(VQ11) * rot[5] + cos(VQ22 + VQ31) * rot[8];
+	
+	VQ5 = atan2(sqrt(1 - D1 * D1), D1);
+	
+	VQ6 = atan2(sin(VQ22 + VQ31) * cos(VQ11) * rot[1] + sin(VQ22 + VQ31) * sin(VQ11) * rot[4] + cos(VQ22 + VQ31) * rot[7], -(sin(VQ22 + VQ31) * cos(VQ11) * rot[0] + sin(VQ22 + VQ31) * sin(VQ11) * rot[3] + cos(VQ22 + VQ31) * rot[6]));
+	
+	printf("Results:\n Q11: %f\n Q12: %f\n Q21: %f\n Q22: %f\n Q31: %f\n Q32: %f\n Q4: %f\n Q5: %f\n Q6: %f\n", VQ11, VQ12, VQ21, VQ22, VQ31, VQ32, VQ4, VQ5, VQ6);
+	printf("D1: %f\n", D1);
+}
 
 int main(){
-	/*transpose_m_32f();
-	printf("\n\n");
-	mul_mm_32f();
-	printf("Atan2: %.3f", atan2(1,1));*/
 	
-	forwardKinematics(0.1, 0.2, 0.3, 0.4, 0.5, 0.6);
+	
+	/*printJacobian(0, 0, 0, 0, 0, 0);*/
+	
+	forwardKin(0.1, 0.2, 0.3, 0.4, 0.5, 0.6);
+	
+	Ipp32f pos[3*1] = {410.067291,
+					   110.158470,
+					   845.345520};
+	
+	Ipp32f rot[3*3] = {0.121698, -0.606672, 0.785582,
+					   0.818364, 0.509197, 0.266456,
+					   -0.561668, 0.610465, 0.558446};
+	
+	geoInvKin(pos, rot);
 	return 0;
 }
