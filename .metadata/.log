@@ -5485,3 +5485,529 @@ org.eclipse.core.runtime.CoreException: Error
 
 !ENTRY com.windriver.ide.target 1 0 2022-02-21 13:07:37.937
 !MESSAGE TM shutdown completed.
+!SESSION 2022-02-21 15:00:23.652 -----------------------------------------------
+eclipse.buildId=M20130131-0800/WB20190918-0146
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:00:34.805
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:00:34.806
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:00:34.807
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.getProperty(DBProperties.java:63)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getProperty(PDOM.java:1363)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:600)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:00:34.807
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:00:34.814
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:124)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:407)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:390)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:366)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:572)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:00:34.814
+!MESSAGE Error
+
+!ENTRY com.windriver.ide.common.core 1 0 2022-02-21 15:00:38.418
+!MESSAGE Workbench license obtained in 4,69s, vendor information: <ln>685289</ln><flt>1</flt><ps>2213-1</ps>
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:00:38.455
+!MESSAGE C:\WindRiver\workbench-3.3\dfw\\x86-win32\bin\dfwserver.exe  -protocol mi -io sockets -useregistry -session dfw-wb336-Egoitz -registryhost 127.0.0.1
+
+!ENTRY com.windriver.ide 1 0 2022-02-21 15:00:38.785
+!MESSAGE Workbench start-up time: 11,02s, Main window shown after: 5,83s.
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:00:43.421
+!MESSAGE Connected to Wind River debug server backend at 127.0.0.1, 127.0.0.1:49929, PID=15392, Session="dfw-wb336-Egoitz"
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:00:43.445
+!MESSAGE Wind River Debug Server API Version '2.17.0' (build name 'DFW_BUILD_3_3_6_7 - 10/06/2016 09:57:12')
+
+!ENTRY org.eclipse.help 4 0 2022-02-21 15:04:51.835
+!MESSAGE Error reading context-sensitive help file /"com.windriver.ide.doc.wr_ppp_6.9/wr_ppp_comp_ref/html/contexts.xml" (skipping file)
+!STACK 0
+java.io.FileNotFoundException
+	at org.eclipse.help.internal.context.ContextFileProvider.loadContexts(ContextFileProvider.java:206)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContexts(ContextFileProvider.java:181)
+	at org.eclipse.help.internal.context.ContextFileProvider.getPluginContexts(ContextFileProvider.java:158)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContext(ContextFileProvider.java:83)
+	at org.eclipse.help.internal.context.ContextManager.getContext(ContextManager.java:65)
+	at org.eclipse.help.HelpSystem.getContext(HelpSystem.java:49)
+	at com.windriver.ide.internal.apidoc.WRAPIHelpProvider.getFunctionInfo(WRAPIHelpProvider.java:124)
+	at org.eclipse.cdt.internal.ui.text.CHelpSettings.getFunctionInfo(CHelpSettings.java:121)
+	at org.eclipse.cdt.internal.ui.CHelpProviderManager.getFunctionInfo(CHelpProviderManager.java:163)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CDocHover.getHoverInfo(CDocHover.java:81)
+	at org.eclipse.cdt.internal.ui.text.c.hover.AbstractCEditorTextHover.getHoverInfo2(AbstractCEditorTextHover.java:84)
+	at org.eclipse.cdt.internal.ui.text.c.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:144)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CEditorTextHoverProxy.getHoverInfo2(CEditorTextHoverProxy.java:84)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.help 4 0 2022-02-21 15:04:51.863
+!MESSAGE Error reading context-sensitive help file /"com.windriver.ide.doc.wr_net_stack_6.9/wr_net_stack_comp_ref/html/contexts.xml" (skipping file)
+!STACK 0
+java.io.FileNotFoundException
+	at org.eclipse.help.internal.context.ContextFileProvider.loadContexts(ContextFileProvider.java:206)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContexts(ContextFileProvider.java:181)
+	at org.eclipse.help.internal.context.ContextFileProvider.getPluginContexts(ContextFileProvider.java:158)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContext(ContextFileProvider.java:83)
+	at org.eclipse.help.internal.context.ContextManager.getContext(ContextManager.java:65)
+	at org.eclipse.help.HelpSystem.getContext(HelpSystem.java:49)
+	at com.windriver.ide.internal.apidoc.WRAPIHelpProvider.getFunctionInfo(WRAPIHelpProvider.java:124)
+	at org.eclipse.cdt.internal.ui.text.CHelpSettings.getFunctionInfo(CHelpSettings.java:121)
+	at org.eclipse.cdt.internal.ui.CHelpProviderManager.getFunctionInfo(CHelpProviderManager.java:163)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CDocHover.getHoverInfo(CDocHover.java:81)
+	at org.eclipse.cdt.internal.ui.text.c.hover.AbstractCEditorTextHover.getHoverInfo2(AbstractCEditorTextHover.java:84)
+	at org.eclipse.cdt.internal.ui.text.c.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:144)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CEditorTextHoverProxy.getHoverInfo2(CEditorTextHoverProxy.java:84)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.help 4 0 2022-02-21 15:04:51.868
+!MESSAGE Error reading context-sensitive help file /"com.windriver.ide.doc.wr_ieee_1394_serial_bus_1.0/wr_ieee_1394_serial_bus_programmers_guide/html/contexts.xml" (skipping file)
+!STACK 0
+java.io.FileNotFoundException
+	at org.eclipse.help.internal.context.ContextFileProvider.loadContexts(ContextFileProvider.java:206)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContexts(ContextFileProvider.java:181)
+	at org.eclipse.help.internal.context.ContextFileProvider.getPluginContexts(ContextFileProvider.java:158)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContext(ContextFileProvider.java:83)
+	at org.eclipse.help.internal.context.ContextManager.getContext(ContextManager.java:65)
+	at org.eclipse.help.HelpSystem.getContext(HelpSystem.java:49)
+	at com.windriver.ide.internal.apidoc.WRAPIHelpProvider.getFunctionInfo(WRAPIHelpProvider.java:124)
+	at org.eclipse.cdt.internal.ui.text.CHelpSettings.getFunctionInfo(CHelpSettings.java:121)
+	at org.eclipse.cdt.internal.ui.CHelpProviderManager.getFunctionInfo(CHelpProviderManager.java:163)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CDocHover.getHoverInfo(CDocHover.java:81)
+	at org.eclipse.cdt.internal.ui.text.c.hover.AbstractCEditorTextHover.getHoverInfo2(AbstractCEditorTextHover.java:84)
+	at org.eclipse.cdt.internal.ui.text.c.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:144)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CEditorTextHoverProxy.getHoverInfo2(CEditorTextHoverProxy.java:84)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.help 4 0 2022-02-21 15:04:52.330
+!MESSAGE Error reading context-sensitive help file /"com.windriver.ide.doc.vxworks_6.9/vxworks_comp_ref/html/contexts.xml" (skipping file)
+!STACK 0
+java.io.FileNotFoundException
+	at org.eclipse.help.internal.context.ContextFileProvider.loadContexts(ContextFileProvider.java:206)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContexts(ContextFileProvider.java:181)
+	at org.eclipse.help.internal.context.ContextFileProvider.getPluginContexts(ContextFileProvider.java:158)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContext(ContextFileProvider.java:83)
+	at org.eclipse.help.internal.context.ContextManager.getContext(ContextManager.java:65)
+	at org.eclipse.help.HelpSystem.getContext(HelpSystem.java:49)
+	at com.windriver.ide.internal.apidoc.WRAPIHelpProvider.getFunctionInfo(WRAPIHelpProvider.java:124)
+	at org.eclipse.cdt.internal.ui.text.CHelpSettings.getFunctionInfo(CHelpSettings.java:121)
+	at org.eclipse.cdt.internal.ui.CHelpProviderManager.getFunctionInfo(CHelpProviderManager.java:163)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CDocHover.getHoverInfo(CDocHover.java:81)
+	at org.eclipse.cdt.internal.ui.text.c.hover.AbstractCEditorTextHover.getHoverInfo2(AbstractCEditorTextHover.java:84)
+	at org.eclipse.cdt.internal.ui.text.c.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:144)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CEditorTextHoverProxy.getHoverInfo2(CEditorTextHoverProxy.java:84)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:07:44.122
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:07:44.122
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:08:25.112
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:08:25.112
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:10:54.380
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:10:54.381
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:12:54.723
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:12:54.723
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:13:18.609
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:13:18.609
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:13:27.422
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:13:27.422
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:13:43.961
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:13:43.961
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:14:18.663
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:14:18.664
+!MESSAGE Error
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:14:18.780
+!MESSAGE cmd /c start '"vxsim0"'  /BELOWNORMAL C:\WindRiver\vxworks-6.9\host\x86-win32\bin\vxsim.exe -f C:/WindRiver/vxworks-6.9/target/proj/simpc_diab/default/vxWorks -p 0 -size 536870912 -tn vxsim0 -add_dev serial0=telnet:50360 -l C:/WindRiver/workspace/.metadata/.plugins/com.windriver.ide.target/vxsim0.log
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:14:19.979
+!MESSAGE C:\WindRiver\workbench-3.3\foundation\x86-win32\bin\tgtsvr.exe -n vxsim0 -B wdbpipe -R C:\WindRiver\workspace -RW -Bt 10 vxsim0
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:15:06.739
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:15:06.739
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:17:24.530
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:17:24.530
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:22:19.425
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:22:19.425
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:23:06.441
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:23:06.442
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:24:17.003
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:24:17.004
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:29:00.138
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:29:00.139
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:39:17.031
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:39:17.031
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:43:57.323
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:43:57.323
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:47:10.506
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:47:10.506
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-02-21 15:47:35.073
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:547)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:531)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties$DBProperty.search(DBProperties.java:225)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.removeProperty(DBProperties.java:117)
+	at org.eclipse.cdt.internal.core.pdom.db.DBProperties.setProperty(DBProperties.java:103)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.setProperty(WritablePDOM.java:194)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.setResume(AbstractIndexerTask.java:587)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:507)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:141)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-02-21 15:47:35.073
+!MESSAGE Error
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:59:22.426
+!MESSAGE C:\WindRiver\vxworks-6.9\host\x86-win32\bin\vxsim.exe -kill 0
+
+!ENTRY com.windriver.ide.target 1 0 2022-02-21 15:59:22.460
+!MESSAGE TM shutdown completed.

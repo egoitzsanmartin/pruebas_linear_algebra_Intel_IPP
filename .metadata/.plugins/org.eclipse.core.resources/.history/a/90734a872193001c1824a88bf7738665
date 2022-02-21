@@ -99,6 +99,92 @@ genPRINT_m( 64f );
 genPRINT_ma( 64f );
 genPRINT_m_P( 64f );
 genPRINT_m_L( 64f );
+ 
+IppStatus transpose_m_32f(void) {
+    /* Source matrix with width=4 and height=3 */
+    Ipp32f pSrc[3*4] = { 1,  2, 3, 4,
+                         5,  6, 7, 8,
+                         9,  0, 1, 2 };
+
+    /* Destination matrix with width=3 and height=4 */
+    Ipp32f pDst[4*3];
+    /* Standard description for source and destination matrices */
+    int srcStride2 = sizeof(Ipp32f);
+    int srcStride1 = 4*sizeof(Ipp32f);
+    int dstStride2 = sizeof(Ipp32f);
+    int dstStride1 = 3*sizeof(Ipp32f);
+
+    IppStatus status = ippmTranspose_m_32f((const Ipp32f*)pSrc,
+        srcStride1, srcStride2, 4, 3, pDst, dstStride1, dstStride2);
+
+    /*    // It is recommended to check return status    // to detect wrong input parameters, if any    */
+    if (status == ippStsNoErr) 
+    {
+    	printf_m_Ipp32f("Original matrix:", pSrc, 3, 4, status);
+    	printf_m_Ipp32f("Transposed matrix:", pDst, 3, 4, status);
+    } else 
+    {
+    	printf("Function returns status: %s \n", ippGetStatusString(status));
+    }
+
+    return status;
+}
+
+IppStatus mul_mm_32f(void) {
+    /* Src1 matrix with width=4 and height=3 */
+    Ipp32f pSrc1[3*15] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3,
+                           2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4,
+                           3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5 };
+    
+    int src1Width  = 15;
+    int src1Height = 3;
+    int src1Stride2 = sizeof(Ipp32f);
+    int src1Stride1 = 15*sizeof(Ipp32f);    /* Src2 matrix with width=3 and height=4 */
+    Ipp32f pSrc2[15*3] = { 1, 2, 3,
+                          2, 1, 2,
+                          3, 2, 1,
+                          4, 3, 2,
+    					  5, 4, 3,
+    					  6, 5, 4,
+    					  7, 6, 5,
+    					  8, 7, 6,
+    					  9, 8, 7,
+    					  8, 9, 8,
+    					  7, 8, 9,
+    					  6, 7, 8,
+    					  5, 6, 7,
+    					  4, 5, 6,
+    					  3, 4, 5 };
+    int src2Width  = 3;
+    int src2Height = 15;
+    int src2Stride2 = sizeof(Ipp32f);
+    int src2Stride1 = 3*sizeof(Ipp32f);
+
+    /*
+    // Destination matrix has width=src2Width=3 and height=src1Height=3 
+    */
+    Ipp32f pDst[3*3];
+    int dstStride2 = sizeof(Ipp32f);
+    int dstStride1 = 3*sizeof(Ipp32f);
+
+    IppStatus status = ippmMul_mm_32f((const Ipp32f*)pSrc1, src1Stride1,
+        src1Stride2, src1Width, src1Height, (const Ipp32f*)pSrc2,
+        src2Stride1, src2Stride2, src2Width, src2Height,
+        pDst, dstStride1, dstStride2);
+    /*    
+    // It is recommended to check return status
+    // to detect wrong input parameters, if any
+    */    
+    if (status == ippStsNoErr) {
+    	printf_m_Ipp32f("Source matrix 1:", pSrc1, 15, 3, status);    
+    	printf_m_Ipp32f("Source matrix 2:", pSrc2, 3, 15, status);    
+    	printf_m_Ipp32f("Destination matrix:", pDst, 3, 3, status);
+    } else {        
+    	printf("Function returns status: %s \n", ippGetStatusString(status));    
+    }    
+    
+    return status;
+}
 
 void printJacobian(float q1, float q2, float q3, float q4, float q5, float q6){
 	Ipp32f jacobian[6*6] = {- 50*sin(q1) - sin(q1)*(425*sin(q2) - cos(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425))) - cos(q1)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100 + 50), cos(q1)*(425*cos(q2) + cos(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + sin(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425))), cos(q1)*cos(q2)*(sin(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) + cos(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)) + cos(q1)*sin(q2)*(cos(q3)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - sin(q3)*((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100 + 425)),   sin(q1)*((5647*cos(q6)*sin(q4))/100 - (7683*cos(q4)*sin(q5))/25 + (5647*cos(q4)*cos(q5)*sin(q6))/100) - cos(q2 + q3)*cos(q1)*((5647*cos(q4)*cos(q6))/100 + (7683*sin(q4)*sin(q5))/25 - (5647*cos(q5)*sin(q4)*sin(q6))/100), - ((7683*cos(q5))/25 + (5647*sin(q5)*sin(q6))/100)*(sin(q1)*sin(q4) - cos(q1)*cos(q2)*cos(q3)*cos(q4) + cos(q1)*cos(q4)*sin(q2)*sin(q3)) - sin(q2 + q3)*cos(q1)*((7683*sin(q5))/25 - (5647*cos(q5)*sin(q6))/100), (5647*cos(q6)*(cos(q5)*sin(q1)*sin(q4) + cos(q1)*cos(q2)*sin(q3)*sin(q5) + cos(q1)*cos(q3)*sin(q2)*sin(q5) - cos(q1)*cos(q2)*cos(q3)*cos(q4)*cos(q5) + cos(q1)*cos(q4)*cos(q5)*sin(q2)*sin(q3)))/100 + (5647*sin(q6)*(cos(q4)*sin(q1) + cos(q1)*cos(q2)*cos(q3)*sin(q4) - cos(q1)*sin(q2)*sin(q3)*sin(q4)))/100,
@@ -110,12 +196,12 @@ void printJacobian(float q1, float q2, float q3, float q4, float q5, float q6){
 	int J_Width = 6;
 	int J_Height = 6;
 	
+	/*
+	 	tusmuertos^2 = tusmuertos*tusmuertos ---> (\w{1,100})\^2
+	*/
+	
 	printf_m_Ipp32f("Jacobian: ", jacobian, J_Width, J_Height, ippStsNoErr);
 }
-
-/*
-	ejemplo^2 = ejemplo*ejemplo ---> (\w{1,100})\^2
-*/
 
 void forwardKin(float* Q, Ipp32f* A0_flange){
 	
@@ -166,7 +252,9 @@ void forwardKin(float* Q, Ipp32f* A0_flange){
 	int DH_Width  = 4;
 	int DH_Height = 4;
 	int DH_size = (DH_Width * DH_Height);
+	/* Set stride2*/
 	int DH_stride2 = sizeof(Ipp32f)*1;
+	/* Set stride1*/
 	int DH_stride1 = sizeof(Ipp32f)*4;
 
 	Ipp32f HT_MA[4*4*7];
@@ -175,7 +263,9 @@ void forwardKin(float* Q, Ipp32f* A0_flange){
 	int HT_Height = 4;
 	int HT_size = (HT_Height * HT_Width);
 	int count = 7;
+	/* Set stride2*/
 	int HT_stride2 = sizeof(Ipp32f)*1;
+	/* Set stride1*/
 	int HT_stride1 = sizeof(Ipp32f)*4;
 	
 	Ipp32f tmp[4*4] = {1, 0, 0, 0,
@@ -208,11 +298,14 @@ void forwardKin(float* Q, Ipp32f* A0_flange){
 	for(j = 0; j < HT_size; j++){
 		A0_flange[j] = result[j];
 	}
+	printf_m_Ipp32f("Result: ", A0_flange, HT_Width, HT_Height, ippStsNoErr);
 	
 	
 }
 
-void geoInvKin(Ipp32f* pos, Ipp32f* rot, float* Q){	
+void geoInvKin(Ipp32f* pos, Ipp32f* rot, float* Q){
+	/* WC = pos - 100*rot*[0,0,1]T; */
+	
 	int pos_stride2 = sizeof(Ipp32f)*1;
 	
 	int rot_Width = 3;
@@ -281,13 +374,15 @@ void geoInvKin(Ipp32f* pos, Ipp32f* rot, float* Q){
 }
 
 int main(){
+	
+	
+	/*printJacobian(0, 0, 0, 0, 0, 0);*/
+	
 	Ipp32f M[4*4];
 	float Q[6] = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6};
 	float Q_res[9];
 	
 	forwardKin(Q, M);
-	
-	printf_m_Ipp32f("Forward Kin: ", M, 4, 4, ippStsNoErr);
 	
 	Ipp32f pos[3*1] = {M[3],
 					   M[7],
@@ -297,8 +392,8 @@ int main(){
 					   M[4], M[5], M[6],
 					   M[8], M[9], M[10]};
 	
-	geoInvKin(pos, rot, Q_res);
+	geoInvKin(pos, rot);
 	
-	printf("Invers Kin:\n Q11: %f\n Q12: %f\n Q21: %f\n Q22: %f\n Q31: %f\n Q32: %f\n Q4: %f\n Q5: %f\n Q6: %f\n", Q_res[0], Q_res[1], Q_res[2], Q_res[3], Q_res[4], Q_res[5], Q_res[6], Q_res[7], Q_res[8]);
+	printf("Results:\n Q11: %f\n Q12: %f\n Q21: %f\n Q22: %f\n Q31: %f\n Q32: %f\n Q4: %f\n Q5: %f\n Q6: %f\n", VQ11, VQ12, VQ21, VQ22, VQ31, VQ32, VQ4, VQ5, VQ6);
 	return 0;
 }

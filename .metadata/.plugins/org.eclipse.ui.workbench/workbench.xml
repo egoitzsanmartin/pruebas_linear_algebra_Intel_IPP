@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="43" version="2.0">
+<workbench progressCount="46" version="2.0">
 <workbenchAdvisor/>
 <window height="980" maximized="true" width="1820" x="-191" y="45">
 <fastViewData fastViewLocation="1024"/>
@@ -38,26 +38,39 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/WindRiver/workspace/la_src/main.c" title="main.c" tooltip="la_src/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/WindRiver/workspace/la_src/main.c" title="main.c" tooltip="la_src/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/la_src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="23521" selectionTopPixel="6858"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20522" selectionTopPixel="5378"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="test.c" partName="test.c" path="C:/egoitz.sanmartin/LLI/sample/src/test.c" title="test.c" tooltip="lli_src/test.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lli_src/test.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="26775" selectionTopPixel="17900"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5559" selectionTopPixel="1533"/>
 </editor>
 <editor id="com.windriver.ide.devcenter.internal.DevCenterEditor" name="Getting Started" partName="Getting Started" title="Getting Started" tooltip="" workbook="DefaultEditorWorkbook">
 <input factoryID="com.windriver.ide.devcenter.internal.DevCenterEditorInputFactory"/>
 <editorState devCenterLastUrl="packageContrib/C:/WindRiver/workbench-3.3/gettingStarted/wrwb/workbench-index.html" devCenterLastVersion="3.3.2"/>
 </editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="algo1.c" partName="algo1.c" path="C:/egoitz.sanmartin/LLI/sample/src/algo1.c" title="algo1.c" tooltip="lli_src/algo1.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lli_src/algo1.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2555" selectionTopPixel="1483"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="algo2.c" partName="algo2.c" path="C:/egoitz.sanmartin/LLI/sample/src/algo2.c" title="algo2.c" tooltip="lli_src/algo2.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lli_src/algo2.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="73" selectionTopPixel="468"/>
+</editor>
 </editors>
 <views>
 <view id="com.windriver.ide.importexport.PerspectiveLayoutView" partName="Perspective Layout"/>
 <view id="com.windriver.ide.debug.ui.console.DebugConsoleView" partName="Debug Command Shell">
+<viewState/>
+</view>
+<view id="org.eclipse.rse.ui.view.systemView" partName="Remote Systems">
 <viewState/>
 </view>
 <view id="org.eclipse.search.ui.views.SearchView" partName="Search">
@@ -66,18 +79,9 @@
 <view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
 </viewState>
 </view>
-<view id="org.eclipse.rse.ui.view.systemView" partName="Remote Systems">
-<viewState/>
-</view>
 <view id="org.eclipse.tm.terminal.view.TerminalView" partName="Terminal 1">
 <viewState Title="Terminal 1" _keys_="Title,connectionManageractive,connectionManagerconnection0Encoding,connectionManagerconnection0HasCommandInputField,connectionManagerconnection0PartName,connectionManagerconnection0org.eclipse.tm.internal.terminal.telnet.TelnetConnector.NetworkPort,connectionManagerconnection0org.eclipse.tm.internal.terminal.telnet.TelnetConnector.Timeout,connectionManagersize" connectionManageractive="connection0" connectionManagerconnection0Encoding="ISO-8859-1" connectionManagerconnection0HasCommandInputField="false" connectionManagerconnection0PartName="Terminal 1" connectionManagersize="1">
-<connectionManagerconnection0org>
-<eclipse>
-<tm>
-<internal>
-<terminal>
-<telnet>
-<TelnetConnector NetworkPort="23" Timeout="10"/>
+<connectionManagerconnection0org>&#x0A;<eclipse>&#x0A;<tm>&#x0A;<internal>&#x0A;<terminal>&#x0A;<telnet>&#x0A;<TelnetConnector NetworkPort="23" Timeout="10"/>
 </telnet>
 </terminal>
 </internal>
@@ -116,11 +120,11 @@
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="true" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="false" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
 <view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
 <viewState/>
+</view>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="true" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="false" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
 <view id="com.windriver.ide.target.ui.TargetConsoleView" partName="Target Consoles">
 <viewState/>
@@ -438,29 +442,20 @@
 <view id="com.windriver.ide.ui.build.WRBuildConsoleView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="left">
-<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="left">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="com.windriver.ide.ui.project.WRFileView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.DebugView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="left">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="left">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.26987448" ratioLeft="516" ratioRight="1396" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.6681319" ratioLeft="608" ratioRight="302" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.windriver.ide.target.ui.TargetConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<info folder="true" part="bottom" ratio="0.6681319" ratioLeft="608" ratioRight="302" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="com.windriver.ide.target.ui.TargetConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.tm.terminal.view.TerminalView" label="Terminal 1"/>
 <page content="com.windriver.ide.debug.ui.console.DebugConsoleView" label="Debug Command Shell"/>
 <page content="com.windriver.ide.target.ui.TargetConsoleView" label="Target Consoles"/>
@@ -471,8 +466,7 @@
 <page content="com.windriver.ide.target.ui.dfw.WRDFWInfoRetrieveView" label="LabelNotFound"/>
 <page content="com.windriver.ide.target.ui.wtx.WRWTXRegistryView" label="LabelNotFound"/>
 <page content="com.windriver.ide.terminal.amio.AMIOConsoleView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="4"/>
 <part id="2"/>
@@ -480,23 +474,17 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="right" ratio="0.7299427" ratioLeft="1019" ratioRight="377" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="right" ratio="0.7299427" ratioLeft="1019" ratioRight="377" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="com.windriver.analysis.ui.views.MADetailsView" label="LabelNotFound"/>
 <page content="com.windriver.ide.launch.ui.DebugSymbolBrowserView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="leftbottom" ratio="0.5991238" ratioLeft="547" ratioRight="366" relationship="4" relative="left">
-<folder activePageID="org.eclipse.rse.ui.view.systemView" appearance="2" expanded="2">
-<page content="org.eclipse.rse.ui.view.systemView" label="Remote Systems"/>
+<info folder="true" part="leftbottom" ratio="0.5991238" ratioLeft="547" ratioRight="366" relationship="4" relative="left">&#x0A;<folder activePageID="org.eclipse.rse.ui.view.systemView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.rse.ui.view.systemView" label="Remote Systems"/>
 <page content="com.windriver.ide.debug.ui.osobjects.KOView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -611,13 +599,13 @@
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Disconnect"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.SkipAllBreakpoints"/>
 <hide_toolbar_item_id id="com.windriver.ide.ocd.ui.welcomescreen.action"/>
-<hide_toolbar_item_id id="org.eclipse.tcf.te.ui.terminals.toolbar"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.ToggleStepFilters"/>
+<hide_toolbar_item_id id="org.eclipse.tcf.te.ui.terminals.toolbar"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepOver"/>
-<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Suspend"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Resume"/>
-<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Suspend"/>
 <hide_toolbar_item_id id="com.windriver.ide.cfg.components.clients.opcae.actions.Launch"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="com.windriver.ide.ui.WRBuildFile"/>
 <hide_toolbar_item_id id="com.windriver.ide.ui.WRRunLastBuild"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.DropToFrame"/>
@@ -627,8 +615,8 @@
 <view id="org.eclipse.tm.terminal.view.TerminalView"/>
 <view id="com.windriver.ide.ui.build.WRBuildConsoleView"/>
 <view id="com.windriver.ide.debug.ui.console.DebugConsoleView"/>
-<view id="com.windriver.ide.target.ui.TargetConsoleView"/>
 <view id="org.eclipse.search.ui.views.SearchView"/>
+<view id="com.windriver.ide.target.ui.TargetConsoleView"/>
 <view id="org.eclipse.debug.ui.BreakpointView"/>
 <view id="org.eclipse.debug.ui.VariableView"/>
 <view id="org.eclipse.debug.ui.RegisterView"/>
@@ -730,156 +718,159 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/la_src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lli_src/algo1.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lli_src/test.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lli_src/algo2.c"/>
 </editors>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22785" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23141" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22794" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22811" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22823" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22832" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22851" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22860" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22602" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22743" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22623" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22632" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22650" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22662" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22671" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22702" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22711" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22728" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22737" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22738" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22743" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22896" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22901" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22936" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22948" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22957" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22976" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22988" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22997" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23016" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23025" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23026" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23045" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23057" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23066" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23085" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23097" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23106" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23125" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23134" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23301" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="22691" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23331" y="1"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23143" y="160"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23322" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23327" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23659" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="23397" y="42"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="8027" y="0"/>
-</item>
-<item active="true" historyLabel="main.c" index="0">
 <position info="not_deleted" x="8429" y="74"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20369" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20384" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20431" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20437" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20443" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20458" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20464" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20470" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20485" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20491" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20498" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20406" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20177" y="103"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20501" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="17718" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20263" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20344" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20262" y="18"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="15453" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20262" y="18"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="23396" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20204" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="15485" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="15515" y="2"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20255" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20658" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20668" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20678" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20688" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20698" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20708" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20718" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20728" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="20522" y="0"/>
+</item>
+<item historyLabel="algo1.c" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="test.c" index="2">
+<position info="not_deleted" x="26775" y="19"/>
+</item>
+<item historyLabel="algo2.c" index="3">
+<position info="not_deleted" x="73" y="0"/>
+</item>
+<item historyLabel="test.c" index="2">
+<position info="not_deleted" x="5559" y="0"/>
+</item>
+<item historyLabel="algo2.c" index="3">
+<position info="not_deleted" x="73" y="0"/>
+</item>
+<item active="true" historyLabel="algo1.c" index="1">
+<position info="not_deleted" x="73" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -900,6 +891,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="algo2.c" tooltip="lli_src/algo2.c">
+<persistable path="/lli_src/algo2.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="algo1.c" tooltip="lli_src/algo1.c">
+<persistable path="/lli_src/algo1.c"/>
+</file>
 <file factoryID="com.windriver.ide.devcenter.internal.DevCenterEditorInputFactory" id="com.windriver.ide.devcenter.internal.DevCenterEditor" name="Getting Started" tooltip="">
 <persistable/>
 </file>

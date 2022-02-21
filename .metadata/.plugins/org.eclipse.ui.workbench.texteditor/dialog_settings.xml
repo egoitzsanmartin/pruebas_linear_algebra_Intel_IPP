@@ -2,32 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="425" key="DIALOG_WIDTH"/>
-		<item value="228" key="DIALOG_Y_ORIGIN"/>
+		<item value="142" key="DIALOG_Y_ORIGIN"/>
+		<item value="1234" key="DIALOG_X_ORIGIN"/>
 		<item value="444" key="DIALOG_HEIGHT"/>
-		<item value="817" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="true" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="true" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="status" key="selection"/>
+		<item value="q3" key="selection"/>
 		<list key="findhistory">
-			<item value="status"/>
-			<item value="(\w{1,100})\^2"/>
-			<item value="(\w{1,100})\^2$1"/>
-			<item value="\1(\w{1,100})\^2"/>
-			<item value="\w{1,100}\^2"/>
-			<item value="\w{1,100}\^2\1"/>
-			<item value="(\w{1,100})::\1\^2"/>
-			<item value="(\w{1,100})\^2::\1"/>
+			<item value="q3"/>
+			<item value="q2"/>
+			<item value="q1"/>
+			<item value="VQ6"/>
+			<item value="VQ5"/>
+			<item value="VQ4"/>
+			<item value="VQ32"/>
+			<item value="VQ31"/>
 		</list>
 		<list key="replacehistory">
-			<item value="$1*$1"/>
-			<item value="[] * []"/>
-			<item value="[:word:] * [:word:]"/>
+			<item value="Q[2]"/>
+			<item value="Q[1]"/>
+			<item value="Q[0]"/>
+			<item value="Q[8]"/>
+			<item value="Q[7]"/>
+			<item value="Q[6]"/>
+			<item value="Q[5]"/>
+			<item value="Q[4]"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
