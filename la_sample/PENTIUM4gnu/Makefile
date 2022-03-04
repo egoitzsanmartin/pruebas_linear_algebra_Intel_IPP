@@ -36,7 +36,7 @@ MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
 WS_ROOT_DIR := C:/WindRiver/workspace
-PRJ_ROOT_DIR := $(WS_ROOT_DIR)/la_sample
+PRJ_ROOT_DIR := C:/Users/Lab11306/Desktop/pruebas_linear_algebra_Intel_IPP/la_sample
 
 
 
@@ -124,7 +124,7 @@ la_sample/$(MODE_DIR)/% : LIBPATH =
 la_sample/$(MODE_DIR)/% : LIBS = 
 la_sample/$(MODE_DIR)/% : OBJ_DIR := la_sample/$(MODE_DIR)
 
-la_sample/$(MODE_DIR)/Objects/la_src/main.o : $(WS_ROOT_DIR)/la_src/main.c $(FORCE_FILE_BUILD)
+la_sample/$(MODE_DIR)/Objects/la_src/main.o : C:/Users/Lab11306/Desktop/pruebas_linear_algebra_Intel_IPP/la_src/main.c $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccpentium $(DEBUGFLAGS_C-Compiler) $(CC_ARCH_SPEC) -ansi -fno-zero-initialized-in-bss  -Wall    -MD -MP $(IDE_DEFINES) $(DEFINES) $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -o "$@" -c "$<"
 
 

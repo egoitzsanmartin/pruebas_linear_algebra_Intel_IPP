@@ -1,5 +1,5 @@
 la_sample/Debug/Objects/la_src/main.o:  \
- C:/WindRiver/workspace/la_src/main.c \
+ C:/Users/Lab11306/Desktop/pruebas_linear_algebra_Intel_IPP/la_src/main.c \
   C:/WindRiver/vxworks-6.9/target/h/stdio.h \
   C:/WindRiver/vxworks-6.9/target/h/types/vxANSI.h \
   C:/WindRiver/vxworks-6.9/target/h/stdint.h \
@@ -70,7 +70,8 @@ la_sample/Debug/Objects/la_src/main.o:  \
   C:/WindRiver/intel/20160311-vxworks-6.9/ipp/include/ippvm.h \
   C:/WindRiver/intel/20160311-vxworks-6.9/ipp/include/ippr.h \
   C:/WindRiver/intel/20160311-vxworks-6.9/ipp/include/ippdi.h \
-  C:/WindRiver/vxworks-6.9/target/h/math.h
+  C:/WindRiver/vxworks-6.9/target/h/math.h \
+  C:/WindRiver/vxworks-6.9/target/h/stdlib.h
 
 C:/WindRiver/vxworks-6.9/target/h/stdio.h:
 
@@ -213,3 +214,5 @@ C:/WindRiver/intel/20160311-vxworks-6.9/ipp/include/ippr.h:
 C:/WindRiver/intel/20160311-vxworks-6.9/ipp/include/ippdi.h:
 
 C:/WindRiver/vxworks-6.9/target/h/math.h:
+
+C:/WindRiver/vxworks-6.9/target/h/stdlib.h:
