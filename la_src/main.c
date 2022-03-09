@@ -208,7 +208,7 @@ void forwardKin(Ipp64f* Q, Ipp64f* A0_flange){
 	int DH_stride2 = sizeof(Ipp64f)*1;
 	int DH_stride1 = sizeof(Ipp64f)*4;
 
-	Ipp64f HT_MA[4*4*6];
+	Ipp64f HT_MA[4*4*6] = {};
 	
 	int HT_Width  = 4;
 	int HT_Height = 4;
@@ -222,12 +222,12 @@ void forwardKin(Ipp64f* Q, Ipp64f* A0_flange){
 					   0, 0, 1, 0,
 					   0, 0, 0, 1};
 	
-	Ipp64f result[4*4];
+	Ipp64f result[4*4] = {};
 
 	int i, j;
 	for (i = 0; i < count; i++ )
 	{
-		Ipp64f DH_M[4*4];
+		Ipp64f DH_M[4*4] = {};
 		for(j = 0; j < DH_size; j++){
 			DH_M[j] = DH_MA[j + i*DH_size];
 		}
@@ -266,13 +266,13 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 	int zvec_len = 3;
 	int zvec_stride2 = sizeof(Ipp64f)*1;
 	
-	Ipp64f zrot[3*1];
+	Ipp64f zrot[3*1] = {};
 	int zrot_stride2 = sizeof(Ipp64f)*1;
 	
 	ippmMul_mv_64f((const Ipp64f*) rot, rot_stride1, rot_stride2, rot_Width, rot_Height,
 			   	   (const Ipp64f*) zvec, zvec_stride2, zvec_len,
 			   	   zrot, zrot_stride2);
-	Ipp64f W_len[3*1];
+	Ipp64f W_len[3*1] = {};
 	int W_len_stride2 = sizeof(Ipp64f)*1;
 	int W_len_len = 3;
 	
@@ -280,7 +280,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 				   (Ipp64f) 100,
 				   W_len, W_len_stride2, W_len_len);
 	
-	Ipp64f WC[3*1];
+	Ipp64f WC[3*1] = {};
 	int WC_stride2 = sizeof(Ipp64f)*1;
 	int WC_len = 3;
 	
@@ -302,7 +302,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 	Ipp64f alfaq = atan2(Yc, Xc);
 	Ipp64f betaq = atan2(50, sqrt(fabs(pow(r_q, 2) - pow(50, 2))));
 	
-	Ipp64f q1[2], q2[4], q3[4], q4[8], q5[8], q6[8];
+	Ipp64f q1[2] = {}, q2[4] = {}, q3[4] = {}, q4[8] = {}, q5[8] = {}, q6[8] = {};
 	short int q23_ok[4];
 	
 	q1[0] = wrapToPi(alfaq - betaq);
@@ -314,7 +314,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 	int A01_stride1 = sizeof(Ipp64f)*4;
 	Ipp64f pBuffer[4*4+4];
 	
-	Ipp64f c3[2];
+	Ipp64f c3[2] = {};
 	
 	int i, j, k;
 	
@@ -323,7 +323,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 							sin(q1[i]),  0, cos(q1[i]),  50*sin(q1[i]),
 							0, 		 	-1, 0,           0,
 							0,  		 0, 0,           1 };
-		Ipp64f T01qi[4*4];
+		Ipp64f T01qi[4*4] = {};
 		int T01qi_stride2 = sizeof(Ipp64f)*1;
 		int T01qi_stride1 = sizeof(Ipp64f)*4;
 		int T01qi_widthHeight = 4;
@@ -331,7 +331,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 		ippmInvert_m_64f((const Ipp64f*) A01, A01_stride1, A01_stride2, pBuffer,
 						 T01qi, T01qi_stride1, T01qi_stride2, T01qi_widthHeight);
 		
-		Ipp64f T01ci[4*4];
+		Ipp64f T01ci[4*4] = {};
 		int T01ci_stride2 = sizeof(Ipp64f)*1;
 		int T01ci_stride1 = sizeof(Ipp64f)*4;
 		
@@ -369,7 +369,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 				int R03_trans_stride2 = sizeof(Ipp64f)*1;
 				int R03_trans_stride1 = sizeof(Ipp64f)*3;
 				
-				Ipp64f W_orient[3*3];
+				Ipp64f W_orient[3*3] = {};
 				int W_orient_stride2 = sizeof(Ipp64f)*1;
 				int W_orient_stride1 = sizeof(Ipp64f)*3;
 				
@@ -383,7 +383,7 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 				for(k = 0; k < 2; k++){
 					if (W_orient[8] == 1){
 						q4[i*4+j*2+k] = 0;
-						q6[i*4+j*2+k] = atan2(W_orient[4], W_orient[0]);
+						q6[i*4+j*2+k] = atan2(W_orient[3], W_orient[0]);
 					}else
 					{
 						if(k == 0){
@@ -447,7 +447,7 @@ void testForwardAndInvKin(){
 	
 	int noError = 0;
 	
-	for(i = 0; i < 100000000; i++){
+	for(i = 0; i < 10000000; i++){
 		
 		for(j = 0; j < 6; j++){
 			Q[j] = (((Ipp64f) rand() / (Ipp64f)(RAND_MAX)) - 0.5) * 2*PI*0.99;
