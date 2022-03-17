@@ -1,9 +1,34 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <ipp.h>
 #include <math.h>
 #include <stdlib.h>
 
-#define PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+typedef struct _Coeffs
+{
+	Ipp64f 			A[6];
+	Ipp64f			B[6];
+	Ipp64f			C[6];
+	Ipp64f			D[6];
+	Ipp64f			E[6];
+	Ipp64f			F[6];
+} _Coeffs;
+
+static _Coeffs	_coeffs;
+
+void initCoeffs(void)
+{
+	int i;
+	
+	for(i=0; i < 6; i++){
+		_coeffs.A[i] = 0.0;
+		_coeffs.B[i] = 0.0;
+		_coeffs.C[i] = 0.0;
+		_coeffs.D[i] = 0.0;
+		_coeffs.E[i] = 0.0;
+		_coeffs.F[i] = 0.0;
+	}
+}
 
 /*
 // The functions providing simple output of the result
@@ -141,7 +166,7 @@ Ipp64f Mod(Ipp64f x, Ipp64f y)
 
 Ipp64f wrapToPi(Ipp64f fAng)
 {
-    return Mod(fAng + PI, (Ipp64f)2*PI) - PI;
+    return Mod(fAng + IPP_PI, (Ipp64f)2*IPP_PI) - IPP_PI;
 }
 /*
 void printJacobian(Ipp64f q1, Ipp64f q2, Ipp64f q3, Ipp64f q4, Ipp64f q5, Ipp64f q6){
@@ -175,13 +200,13 @@ void forwardKin(Ipp64f* Q, Ipp64f* A0_flange){
 						   0,      -1, 0,        0,
 						   0,       0, 0,        1,
 						   
-						   cos(q2-PI/2), -sin(q2-PI/2), 0, 425*cos(q2-PI/2),
-						   sin(q2-PI/2),  cos(q2-PI/2), 0, 425*sin(q2-PI/2),
+						   cos(q2-IPP_PI/2), -sin(q2-IPP_PI/2), 0, 425*cos(q2-IPP_PI/2),
+						   sin(q2-IPP_PI/2),  cos(q2-IPP_PI/2), 0, 425*sin(q2-IPP_PI/2),
 						   0,             0,            1, 0,
 						   0,             0,            0, 1,
 	
-						   cos(q3+PI/2), 0, sin(q3+PI/2),  0,
-						   sin(q3+PI/2), 0, -cos(q3+PI/2), 0,
+						   cos(q3+IPP_PI/2), 0, sin(q3+IPP_PI/2),  0,
+						   sin(q3+IPP_PI/2), 0, -cos(q3+IPP_PI/2), 0,
 						   0,            1, 0,             50,
 						   0,            0, 0,             1,
 
@@ -350,15 +375,15 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 			q3[i*2] = atan2(sqrt(1-pow(c3[i], 2)), c3[i]);
 			q3[i*2 + 1] = -q3[i*2];
 			
-			q2[i*2] = wrapToPi(PI/2+atan2(T01ci[7], T01ci[3])-atan2(425 * sin(q3[i*2]), 425+425*cos(q3[i*2])));
-			q2[i*2 + 1] =  wrapToPi(PI/2+atan2(T01ci[7], T01ci[3])-atan2(425 * sin(q3[i*2 + 1]), 425+425*cos(q3[i*2 + 1])));
+			q2[i*2] = wrapToPi(IPP_PI/2+atan2(T01ci[7], T01ci[3])-atan2(425 * sin(q3[i*2]), 425+425*cos(q3[i*2])));
+			q2[i*2 + 1] =  wrapToPi(IPP_PI/2+atan2(T01ci[7], T01ci[3])-atan2(425 * sin(q3[i*2 + 1]), 425+425*cos(q3[i*2 + 1])));
 		}
 		
 		for(j = 0; j < 2; j++){
 			if(q23_ok[i*2+j] == 1){
-				Ipp64f A03[4*4] = { cos(q1[i])*cos(q2[i*2+j] - PI/2)*cos(q3[i*2+j] + PI/2) - cos(q1[i])*sin(q2[i*2+j] - PI/2)*sin(q3[i*2+j] + PI/2), -sin(q1[i]), cos(q1[i])*cos(q2[i*2+j] - PI/2)*sin(q3[i*2+j] + PI/2) + cos(q1[i])*cos(q3[i*2+j] + PI/2)*sin(q2[i*2+j] - PI/2), 50*cos(q1[i]) - 50*sin(q1[i]) + 425*cos(q1[i])*cos(q2[i*2+j] - PI/2),
-									cos(q2[i*2+j] - PI/2)*cos(q3[i*2+j] + PI/2)*sin(q1[i]) - sin(q1[i])*sin(q2[i*2+j] - PI/2)*sin(q3[i*2+j] + PI/2),  cos(q1[i]), cos(q2[i*2+j] - PI/2)*sin(q1[i])*sin(q3[i*2+j] + PI/2) + cos(q3[i*2+j] + PI/2)*sin(q1[i])*sin(q2[i*2+j] - PI/2), 50*cos(q1[i]) + 50*sin(q1[i]) + 425*cos(q2[i*2+j] - PI/2)*sin(q1[i]),
-									-cos(q2[i*2+j] - PI/2)*sin(q3[i*2+j] + PI/2) - cos(q3[i*2+j] + PI/2)*sin(q2[i*2+j] - PI/2),        0,                 cos(q2[i*2+j] - PI/2)*cos(q3[i*2+j] + PI/2) - sin(q2[i*2+j] - PI/2)*sin(q3[i*2+j] + PI/2),                                  -425*sin(q2[i*2+j] - PI/2),
+				Ipp64f A03[4*4] = { cos(q1[i])*cos(q2[i*2+j] - IPP_PI/2)*cos(q3[i*2+j] + IPP_PI/2) - cos(q1[i])*sin(q2[i*2+j] - IPP_PI/2)*sin(q3[i*2+j] + IPP_PI/2), -sin(q1[i]), cos(q1[i])*cos(q2[i*2+j] - IPP_PI/2)*sin(q3[i*2+j] + IPP_PI/2) + cos(q1[i])*cos(q3[i*2+j] + IPP_PI/2)*sin(q2[i*2+j] - IPP_PI/2), 50*cos(q1[i]) - 50*sin(q1[i]) + 425*cos(q1[i])*cos(q2[i*2+j] - IPP_PI/2),
+									cos(q2[i*2+j] - IPP_PI/2)*cos(q3[i*2+j] + IPP_PI/2)*sin(q1[i]) - sin(q1[i])*sin(q2[i*2+j] - IPP_PI/2)*sin(q3[i*2+j] + IPP_PI/2),  cos(q1[i]), cos(q2[i*2+j] - IPP_PI/2)*sin(q1[i])*sin(q3[i*2+j] + IPP_PI/2) + cos(q3[i*2+j] + IPP_PI/2)*sin(q1[i])*sin(q2[i*2+j] - IPP_PI/2), 50*cos(q1[i]) + 50*sin(q1[i]) + 425*cos(q2[i*2+j] - IPP_PI/2)*sin(q1[i]),
+									-cos(q2[i*2+j] - IPP_PI/2)*sin(q3[i*2+j] + IPP_PI/2) - cos(q3[i*2+j] + IPP_PI/2)*sin(q2[i*2+j] - IPP_PI/2),        0,                 cos(q2[i*2+j] - IPP_PI/2)*cos(q3[i*2+j] + IPP_PI/2) - sin(q2[i*2+j] - IPP_PI/2)*sin(q3[i*2+j] + IPP_PI/2),                                  -425*sin(q2[i*2+j] - IPP_PI/2),
 									0,        0,                                                                             0,                                                    1 };
 	
 				Ipp64f R03_trans[3*3] =  { A03[0], A03[4], A03[8],
@@ -390,8 +415,8 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 							q4[i*4+j*2+k] = atan2(W_orient[5], W_orient[2]);
 							q6[i*4+j*2+k] = atan2(W_orient[7], -W_orient[6]);
 						}else{
-							q4[i*4+j*2+k] = atan2(W_orient[5], W_orient[2]) - PI;
-							q6[i*4+j*2+k] = atan2(W_orient[7], -W_orient[6]) - PI;
+							q4[i*4+j*2+k] = atan2(W_orient[5], W_orient[2]) - IPP_PI;
+							q6[i*4+j*2+k] = atan2(W_orient[7], -W_orient[6]) - IPP_PI;
 						}
 					}
 					Q[(i*4+j*2+k)*6] = wrapToPi(q1[i]);
@@ -420,12 +445,80 @@ void geoInvKin(Ipp64f* pos, Ipp64f* rot, Ipp64f* Q){
 	}
 }
 
+void calculateCurve(Ipp64f Q0[], Ipp64f QF[], Ipp64f tf){
+	Ipp64f t0=0;
+	
+	Ipp64f dq0=0;
+	Ipp64f dqf=0;
+
+	Ipp64f ddq0=0;
+	Ipp64f ddqf=0;
+	
+	
+	Ipp64f A[6*6] = { 1, t0, pow(t0, 2), pow(t0, 3), pow(t0, 4), pow(t0, 5),  
+					  0, 1, 2*t0, 3*pow(t0, 2), 4*pow(t0, 3), 5*pow(t0, 4),
+					  0, 0, 2, 6*t0, 12*pow(t0, 2), 20*pow(t0, 3),
+					  1, tf, pow(tf, 2), pow(tf, 3), pow(tf, 4), pow(tf, 5),
+					  0, 1, 2*tf, 3*pow(tf, 2), 4*pow(tf, 3), 5*pow(tf, 4),
+					  0, 0, 2, 6*tf, 12*pow(tf, 2), 20*pow(tf, 3) };
+	
+	int A_stride2 = sizeof(Ipp64f)*1;
+	int A_stride1 = sizeof(Ipp64f)*6;
+	
+	int i;
+	
+	for(i = 0; i < 6; i++){
+		
+		Ipp64f q0 = Q0[i];
+		Ipp64f qf = QF[i];
+		
+		Ipp64f result[6] = { q0, dq0, ddq0, qf, dqf, ddqf };
+		int result_stride2 = sizeof(Ipp64f)*1;
+		int result_len = 6;
+		
+		Ipp64f invA[6*6] = {};
+		int invA_stride2 = sizeof(Ipp64f)*1;
+		int invA_stride1 = sizeof(Ipp64f)*6;
+		int invA_widthHeight = 6;
+		
+		Ipp64f pBuffer[6*6+6] = {};
+
+		ippmInvert_m_64f((const Ipp64f*) A, A_stride1, A_stride2, pBuffer,
+						 invA, invA_stride1, invA_stride2, invA_widthHeight);
+		
+		Ipp64f coeffs[6] = {};
+		int coeffs_stride2 = sizeof(Ipp64f)*1;
+		
+		ippmMul_mv_64f((const Ipp64f*) invA, invA_stride1, invA_stride2, invA_widthHeight, invA_widthHeight,
+					   (const Ipp64f*) result, result_stride2, result_len,
+					   coeffs, coeffs_stride2);
+		
+		_coeffs.A[i] = coeffs[0];
+		_coeffs.B[i] = coeffs[1];
+		_coeffs.C[i] = coeffs[2];
+		_coeffs.D[i] = coeffs[3];
+		_coeffs.E[i] = coeffs[4];
+		_coeffs.F[i] = coeffs[5];
+	}
+
+}
+
+void getTrajectory(Ipp64f t, Ipp64f zpos[], Ipp64f zvel[], Ipp64f zacc[]){
+	int i;
+	
+	for(i = 0; i < 6; i++){
+		zpos[i] = _coeffs.F[i] * pow(t, 5) + _coeffs.E[i] * pow(t, 4) + _coeffs.D[i] * pow(t, 3) + _coeffs.C[i] * pow(t, 2) + _coeffs.B[i] * t + _coeffs.A[i];
+		zvel[i] = 5 * _coeffs.F[i] * pow(t, 4) + 4 * _coeffs.E[i] * pow(t, 3) + 3 * _coeffs.D[i] * pow(t, 2) + 2 * _coeffs.C[i]*t + _coeffs.B[i];
+		zacc[i] = 20 * _coeffs.F[i] * pow(t, 3) + 12 * _coeffs.E[i] * pow(t, 2) + 6 * _coeffs.D[i] * t + 2 * _coeffs.C[i];
+	}
+}
+
 void testForwardAndInvKin(){
 	int countError = 0;
 	int QStride0 = sizeof(Ipp64f);
 	int i, j, index;
 	
-	Ipp64f Q[6] = {};
+	Ipp64f Q[6] = {0.174533, 0.174533, 0.174533, 0.174533, 0.174533, 0.174533};
 	
 	Ipp64f M[4*4] = {};
 	
@@ -447,11 +540,12 @@ void testForwardAndInvKin(){
 	
 	int noError = 0;
 	
-	for(i = 0; i < 10000000; i++){
+	
+	for(i = 0; i < 1; i++){
 		
-		for(j = 0; j < 6; j++){
-			Q[j] = (((Ipp64f) rand() / (Ipp64f)(RAND_MAX)) - 0.5) * 2*PI*0.99;
-		}
+		/*for(j = 0; j < 6; j++){
+			Q[j] = (((Ipp64f) rand() / (Ipp64f)(RAND_MAX)) - 0.5) * 2*IPP_PI*0.99;
+		}*/
 
 		for(j = 0; j < 4*4; j++){
 			M[j] = 0;
@@ -472,6 +566,9 @@ void testForwardAndInvKin(){
 		}
 
 		forwardKin(Q, M);
+		
+		printf_m_Ipp64f("Forward Kin:", M, 4, 4, ippStsNoErr);
+		printf("\n");
 		
 		for (j = 0; j < 3; j++){
 			pos[j] = M[j*3 + j + 3];
@@ -591,7 +688,65 @@ void testForwardAndInvKin(){
 	printf("Error count: %d", countError);
 }
 
+void testTrajectory(){
+	Ipp64f Q0[6] = {0,IPP_PI,IPP_PI / 2,-IPP_PI,-IPP_PI,0};
+	Ipp64f QF[6] = {IPP_PI, IPP_PI / 2, 0, IPP_PI, 0, -IPP_PI / 2};
+	Ipp64f tf=10;
+	
+	initCoeffs();
+	
+	printf("Before traj:\n");
+	printf_va_Ipp64f("A:", _coeffs.A, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("B:", _coeffs.B, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("C:", _coeffs.C, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("D:", _coeffs.D, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("E:", _coeffs.E, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("F:", _coeffs.F, 6, 1, ippStsNoErr);
+	printf("\n");
+	
+	calculateCurve(Q0, QF, tf);
+	
+	printf("After traj:\n");
+	printf_va_Ipp64f("A:", _coeffs.A, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("B:", _coeffs.B, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("C:", _coeffs.C, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("D:", _coeffs.D, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("E:", _coeffs.E, 6, 1, ippStsNoErr);
+	printf_va_Ipp64f("F:", _coeffs.F, 6, 1, ippStsNoErr);
+	
+	Ipp64f t;
+	FILE * f;
+	f = fopen("/tgtsvr/trajectory.txt", "w");
+	int i;
+	
+	for(t = 0.0; t < tf; t = t + 0.004){
+		Ipp64f zpos[6] = {};
+		Ipp64f zvel[6] = {};
+		Ipp64f zacc[6] = {};
+		
+		getTrajectory(t, zpos, zvel, zacc);
+		
+		if(f != NULL){
+			for (i = 0; i < 6; i++){
+				fprintf(f, "%f;", zpos[i]);
+			}
+			for (i = 0; i < 6; i++){
+				fprintf(f, "%f;", zvel[i]);
+			}
+			for (i = 0; i < 6; i++){
+				fprintf(f, "%f;", zacc[i]);
+			}
+			fprintf(f, "\n");
+		}
+		printf_va_Ipp64f("Pos:", zpos, 6, 1, ippStsNoErr);
+		printf_va_Ipp64f("Vel:", zvel, 6, 1, ippStsNoErr);
+		printf_va_Ipp64f("Acc:", zacc, 6, 1, ippStsNoErr);
+	}
+	fclose(f);
+}
+
 int main(){
-	testForwardAndInvKin();
+	testTrajectory();
+	/*testForwardAndInvKin();*/
 	return 0;
 }
