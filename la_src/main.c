@@ -3,6 +3,14 @@
 #include <ipp.h>
 #include <math.h>
 #include <stdlib.h>
+#include <sockLib.h>
+#include <inetLib.h>
+#include <errno.h>
+#include <string.h>
+
+#define BUFLEN 512
+#define PORT 8888
+
 
 typedef struct _Coeffs
 {
@@ -745,8 +753,76 @@ void testTrajectory(){
 	fclose(f);
 }
 
+int create_socket (int family, int type, int proto)
+{
+      /* create a socket */
+      int fd = socket (family, type, proto);
+      if (fd == ERROR)
+              /* show the error information */
+              printf ("create socket error: %s",strerror(errno));
+
+      return fd;
+}
+
+int do_binding (int fd)
+{
+      int ret;
+      struct sockaddr_in addr;
+
+      /* the addr specifies the address family , IP address and port
+       for the socket that is being bound */
+      memset (&addr, 0, sizeof(struct sockaddr_in));
+      addr.sin_family = AF_INET;
+      addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+      addr.sin_port = htons(PORT);
+      addr.sin_len = sizeof(addr);
+
+      /* bind the socket */
+      if ((ret=bind (fd, (struct sockaddr*)&addr, sizeof(addr))) == ERROR)
+      {
+              close(fd);
+              printf ("bind error: %s",strerror(errno));
+      }
+      return ret;
+}
+
+
+void rcvmsg (int fd)
+{
+	  printf("Waiting for data...");
+	  struct sockaddr_in client;
+	  char message[BUFLEN] = {};
+      int ret;
+      int slen = sizeof(struct sockaddr_in);
+      if ((ret=recvfrom(fd, message, BUFLEN, 0, (struct sockaddr*)&client, &slen)) == ERROR)
+      {
+              printf ("recv error: %s\n", strerror(errno));
+      }
+      
+      printf ("recved %d bytes : %s\n", ret, message);
+      
+}
+
+void testUDP ()
+{
+      int fd;
+
+      if ((fd = create_socket (AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
+              return;
+
+      if (do_binding (fd) < 0)
+              return;
+      
+      rcvmsg(fd);
+      
+      /* close the socket */
+      close (fd);
+}
+
 int main(){
-	testTrajectory();
-	/*testForwardAndInvKin();*/
+	/*testTrajectory();
+	testForwardAndInvKin();*/
+	
+	testUDP();
 	return 0;
 }
